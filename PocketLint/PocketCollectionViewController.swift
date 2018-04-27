@@ -7,35 +7,84 @@
 //
 
 import UIKit
+import CoreData
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
 class PocketCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
+    // Toggle Firebase usage
+    var firebaseSync = false
+    
+    // Managed Object Context and Initilisation Constructure for using Core Data.
+    private var managedObjectContext: NSManagedObjectContext
+    required init(coder aDecoder: NSCoder) {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        managedObjectContext = (appDelegate?.persistentContainer.viewContext)!
+        super.init(coder: aDecoder)!
+    }
+    
+    // Core Data variables
+    var item: Item?
+    
     // Firebase Storage and Database
     var databaseRef = Database.database().reference().child("images")
     var storageRef = Storage.storage()
     
     // Initialise list to store images and image urls
-    var itemList = [UIImage]()
+    var currentItems = [Item]()
+    var itemList = [Item]()
     var itemURLList = [String]()
     
-    // Collection View parameters
+    // Collection View variables
     private let reuseIdentifier = "itemCell"
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private let itemsPerRow: CGFloat = 1
     
-    // Photo capture parameters
-    private var newPhoto: UIImage?
+    // Photo capture variables
+    private var photo: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+        fetchItemsFromCoreData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
+        fetchItemsFromCoreData()
+        
+        self.collectionView?.reloadSections([0])
+    
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Fetch Data
+    
+    // Fetch items from Core Data
+    private func fetchItemsFromCoreData() {
+        // Fetch Items from Core Data
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Item")
+        do {
+            currentItems = try managedObjectContext.fetch(fetchRequest) as! [Item]
+            if currentItems.count == 0 {
+                // Insert test data here ()
+                currentItems = try managedObjectContext.fetch(fetchRequest) as! [Item]
+            }
+            itemList = currentItems     // Update local array with fetched books.
+        }
+        catch let error {
+            print("Could not fetch \(error)")
+        }
+    }
+    
+    // Fetch items from Firebase
+    private func fetchItemsFromFirebase() {
         // Load images from firebase
         let userID = Auth.auth().currentUser!.uid
         let userRef = databaseRef.child("users").child("\(userID)")
@@ -56,8 +105,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                         if let error = error {
                             print(error.localizedDescription)
                         } else {
-                            let image = UIImage(data: data!)
-                            self.itemList.append(image!)
+                            //let image = UIImage(data: data!)
+                            //self.itemList.append(image!)
                             self.collectionView?.insertItems(at: [IndexPath(row: self.itemList.count - 1, section: 0)])
                             self.collectionView?.reloadSections([0])
                         }
@@ -68,13 +117,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
             print(error.localizedDescription)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    // MARK: - Actions
+    // MARK: - Take Photo
     
     @IBAction func takePhoto(_ sender: Any) {
         let controller = UIImagePickerController()
@@ -89,6 +133,21 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         self.present(controller, animated: true, completion: nil)
     }
     
+    // Function that returns image from the Camera
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            photo = pickedImage
+        }
+        dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "addItemSegue", sender: Any?.self)
+        })
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        displayErrorMessage("There was an error in getting the photo")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func signOut(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -97,14 +156,14 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         self.dismiss(animated:true, completion: nil)
     }
     
-    // MARK: - Upload Photo
+    // MARK: - Upload Photo to Firebase
     
-    private func uploadPhoto() {
+    private func uploadItemToFirebase() {
         guard let userID = Auth.auth().currentUser?.uid else {
             displayErrorMessage("Firebase User ID is invalid.")
             return
         }
-        guard let image = newPhoto else {
+        guard let image = photo else {
             displayErrorMessage("Cannot upload unitl a photo has been taken")
             return
         }
@@ -134,19 +193,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            newPhoto = pickedImage
-        }
-        dismiss(animated: true, completion: {
-            self.uploadPhoto()
-        })
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        displayErrorMessage("There was an error in getting the photo")
-        self.dismiss(animated: true, completion: nil)
-    }
+    // Error Message Template
     
     func displayErrorMessage(_ errorMessage: String) {
         let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
@@ -174,7 +221,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         
         // Configure the cell
         cell.backgroundColor = UIColor.lightGray
-        cell.imageView.image = itemList[indexPath.row]
+        let imageData = itemList[indexPath.row].image as Data?
+        cell.imageView.image = UIImage(data: imageData!)
         
         return cell
     }
@@ -205,15 +253,28 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
 
 
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        // Add Edit Item Segue
+        if let destinationVC = segue.destination as? UINavigationController {
+            // Pass the information of the book to the next screen.
+            let photoVC = destinationVC.viewControllers.first! as! AddEditItemTableViewController
+            photoVC.photo = photo
+        }
+        
+        // View Item Segue
+        if segue.identifier == "viewItemSegue" {
+            if let destinationVC = segue.destination as? ViewItemViewController {
+                let cell = sender as! UICollectionViewCell
+                let indexPath = self.collectionView!.indexPath(for: cell)
+                destinationVC.item = itemList[itemList.count - 1]
+            }
+        }
     }
-    */
+
 
 
     // MARK: UICollectionViewDelegate
