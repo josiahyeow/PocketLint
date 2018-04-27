@@ -1,0 +1,839 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E17807846B9F76F2055D6FC /* Pods_PocketLintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458E24F7AB8917B717D278FA /* Pods_PocketLintTests.framework */; };
+		8A0753102091964800376883 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A07530F2091964800376883 /* GoogleService-Info.plist */; };
+		8A125AF22092DFD7007D983A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF12092DFD7007D983A /* LogInViewController.swift */; };
+		8A125AF42092E185007D983A /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */; };
+		8A125AF62092F6C4007D983A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF52092F6C4007D983A /* SignUpViewController.swift */; };
+		8A3A8C6A208B234C00CA3F48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A8C69208B234C00CA3F48 /* AppDelegate.swift */; };
+		8A3A8C6F208B234C00CA3F48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A3A8C6D208B234C00CA3F48 /* Main.storyboard */; };
+		8A3A8C72208B234C00CA3F48 /* PocketLint.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A8C70208B234C00CA3F48 /* PocketLint.xcdatamodeld */; };
+		8A3A8C74208B234D00CA3F48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A3A8C73208B234D00CA3F48 /* Assets.xcassets */; };
+		8A3A8C77208B234D00CA3F48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A3A8C75208B234D00CA3F48 /* LaunchScreen.storyboard */; };
+		8A3A8C82208B234E00CA3F48 /* PocketLintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A8C81208B234E00CA3F48 /* PocketLintTests.swift */; };
+		8A3A8C8D208B234E00CA3F48 /* PocketLintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A8C8C208B234E00CA3F48 /* PocketLintUITests.swift */; };
+		8A5BB60C209308C6005A0DF5 /* Pods_PocketLint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5BB60B209308C6005A0DF5 /* Pods_PocketLint.framework */; };
+		8A5BB60E20931F23005A0DF5 /* PocketCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */; };
+		8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */; };
+		F5A2E401B52F40864D17C45E /* Pods_PocketLintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8A3A8C7E208B234E00CA3F48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A3A8C5E208B234C00CA3F48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A3A8C65208B234C00CA3F48;
+			remoteInfo = PocketLint;
+		};
+		8A3A8C89208B234E00CA3F48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A3A8C5E208B234C00CA3F48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A3A8C65208B234C00CA3F48;
+			remoteInfo = PocketLint;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		458E24F7AB8917B717D278FA /* Pods_PocketLintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A7A1CC0F498551EB06CB6C0 /* Pods-PocketLintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests.release.xcconfig"; sourceTree = "<group>"; };
+		8880C47106C9DF5BF215EDD8 /* Pods-PocketLintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8A07530F2091964800376883 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8A125AF12092DFD7007D983A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A125AF52092F6C4007D983A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8A3A8C66208B234C00CA3F48 /* PocketLint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A3A8C69208B234C00CA3F48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8A3A8C6E208B234C00CA3F48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8A3A8C71208B234C00CA3F48 /* PocketLint.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PocketLint.xcdatamodel; sourceTree = "<group>"; };
+		8A3A8C73208B234D00CA3F48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A3A8C76208B234D00CA3F48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A3A8C78208B234D00CA3F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A3A8C7D208B234E00CA3F48 /* PocketLintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketLintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A3A8C81208B234E00CA3F48 /* PocketLintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketLintTests.swift; sourceTree = "<group>"; };
+		8A3A8C83208B234E00CA3F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A3A8C88208B234E00CA3F48 /* PocketLintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketLintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A3A8C8C208B234E00CA3F48 /* PocketLintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketLintUITests.swift; sourceTree = "<group>"; };
+		8A3A8C8E208B234E00CA3F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A5BB60920930878005A0DF5 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5BB60B209308C6005A0DF5 /* Pods_PocketLint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PocketLint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketCollectionViewController.swift; sourceTree = "<group>"; };
+		8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketViewController.swift; sourceTree = "<group>"; };
+		8B04AE30F5AACBAE5EBB60FD /* Pods-PocketLintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6A82094218BC2FCA65F2FF0 /* Pods-PocketLintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D76340445CBA2CF1C3BCB010 /* Pods-PocketLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLint.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint.debug.xcconfig"; sourceTree = "<group>"; };
+		E974FDFFA301F44F1C61838C /* Pods_PocketLint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7B2054B9D6C2DBF0268EE79 /* Pods-PocketLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLint.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A3A8C63208B234C00CA3F48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A5BB60C209308C6005A0DF5 /* Pods_PocketLint.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A3A8C7A208B234E00CA3F48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E17807846B9F76F2055D6FC /* Pods_PocketLintTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A3A8C85208B234E00CA3F48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5A2E401B52F40864D17C45E /* Pods_PocketLintUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A3A8C5D208B234C00CA3F48 = {
+			isa = PBXGroup;
+			children = (
+				8A3A8C68208B234C00CA3F48 /* PocketLint */,
+				8A3A8C80208B234E00CA3F48 /* PocketLintTests */,
+				8A3A8C8B208B234E00CA3F48 /* PocketLintUITests */,
+				8A3A8C67208B234C00CA3F48 /* Products */,
+				8F71DC0D00A86E9B305EEE87 /* Pods */,
+				F5E357F66AE1F974DEE1FBFA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8A3A8C67208B234C00CA3F48 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A8C66208B234C00CA3F48 /* PocketLint.app */,
+				8A3A8C7D208B234E00CA3F48 /* PocketLintTests.xctest */,
+				8A3A8C88208B234E00CA3F48 /* PocketLintUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A3A8C68208B234C00CA3F48 /* PocketLint */ = {
+			isa = PBXGroup;
+			children = (
+				8A07530F2091964800376883 /* GoogleService-Info.plist */,
+				8A3A8C69208B234C00CA3F48 /* AppDelegate.swift */,
+				8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */,
+				8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */,
+				8A3A8C6D208B234C00CA3F48 /* Main.storyboard */,
+				8A3A8C73208B234D00CA3F48 /* Assets.xcassets */,
+				8A3A8C75208B234D00CA3F48 /* LaunchScreen.storyboard */,
+				8A3A8C78208B234D00CA3F48 /* Info.plist */,
+				8A3A8C70208B234C00CA3F48 /* PocketLint.xcdatamodeld */,
+				8A125AF12092DFD7007D983A /* LogInViewController.swift */,
+				8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */,
+				8A125AF52092F6C4007D983A /* SignUpViewController.swift */,
+			);
+			path = PocketLint;
+			sourceTree = "<group>";
+		};
+		8A3A8C80208B234E00CA3F48 /* PocketLintTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A8C81208B234E00CA3F48 /* PocketLintTests.swift */,
+				8A3A8C83208B234E00CA3F48 /* Info.plist */,
+			);
+			path = PocketLintTests;
+			sourceTree = "<group>";
+		};
+		8A3A8C8B208B234E00CA3F48 /* PocketLintUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A8C8C208B234E00CA3F48 /* PocketLintUITests.swift */,
+				8A3A8C8E208B234E00CA3F48 /* Info.plist */,
+			);
+			path = PocketLintUITests;
+			sourceTree = "<group>";
+		};
+		8F71DC0D00A86E9B305EEE87 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D76340445CBA2CF1C3BCB010 /* Pods-PocketLint.debug.xcconfig */,
+				F7B2054B9D6C2DBF0268EE79 /* Pods-PocketLint.release.xcconfig */,
+				8B04AE30F5AACBAE5EBB60FD /* Pods-PocketLintTests.debug.xcconfig */,
+				7A7A1CC0F498551EB06CB6C0 /* Pods-PocketLintTests.release.xcconfig */,
+				D6A82094218BC2FCA65F2FF0 /* Pods-PocketLintUITests.debug.xcconfig */,
+				8880C47106C9DF5BF215EDD8 /* Pods-PocketLintUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F5E357F66AE1F974DEE1FBFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A5BB60B209308C6005A0DF5 /* Pods_PocketLint.framework */,
+				8A5BB60920930878005A0DF5 /* IQKeyboardManagerSwift.framework */,
+				E974FDFFA301F44F1C61838C /* Pods_PocketLint.framework */,
+				458E24F7AB8917B717D278FA /* Pods_PocketLintTests.framework */,
+				A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A3A8C65208B234C00CA3F48 /* PocketLint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A3A8C91208B234E00CA3F48 /* Build configuration list for PBXNativeTarget "PocketLint" */;
+			buildPhases = (
+				61C3D74BF5335614D8DDC3B1 /* [CP] Check Pods Manifest.lock */,
+				8A3A8C62208B234C00CA3F48 /* Sources */,
+				8A3A8C63208B234C00CA3F48 /* Frameworks */,
+				8A3A8C64208B234C00CA3F48 /* Resources */,
+				11A7F8D2C805C5B4F6C49D31 /* [CP] Embed Pods Frameworks */,
+				B1F737A16592245B32ADF76A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PocketLint;
+			productName = PocketLint;
+			productReference = 8A3A8C66208B234C00CA3F48 /* PocketLint.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A3A8C7C208B234E00CA3F48 /* PocketLintTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A3A8C94208B234E00CA3F48 /* Build configuration list for PBXNativeTarget "PocketLintTests" */;
+			buildPhases = (
+				9BBF63094FBA67755358318E /* [CP] Check Pods Manifest.lock */,
+				8A3A8C79208B234E00CA3F48 /* Sources */,
+				8A3A8C7A208B234E00CA3F48 /* Frameworks */,
+				8A3A8C7B208B234E00CA3F48 /* Resources */,
+				5A6444C73A944ABD26EBF1CA /* [CP] Embed Pods Frameworks */,
+				70DC8BC3413086E846477ABC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A3A8C7F208B234E00CA3F48 /* PBXTargetDependency */,
+			);
+			name = PocketLintTests;
+			productName = PocketLintTests;
+			productReference = 8A3A8C7D208B234E00CA3F48 /* PocketLintTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8A3A8C87208B234E00CA3F48 /* PocketLintUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A3A8C97208B234E00CA3F48 /* Build configuration list for PBXNativeTarget "PocketLintUITests" */;
+			buildPhases = (
+				5238F2C46A74B66D93607AF4 /* [CP] Check Pods Manifest.lock */,
+				8A3A8C84208B234E00CA3F48 /* Sources */,
+				8A3A8C85208B234E00CA3F48 /* Frameworks */,
+				8A3A8C86208B234E00CA3F48 /* Resources */,
+				5D721588A93775CA4CE59307 /* [CP] Embed Pods Frameworks */,
+				25AABA8080BCA2581AF5B9CF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A3A8C8A208B234E00CA3F48 /* PBXTargetDependency */,
+			);
+			name = PocketLintUITests;
+			productName = PocketLintUITests;
+			productReference = 8A3A8C88208B234E00CA3F48 /* PocketLintUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A3A8C5E208B234C00CA3F48 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Josiah Yeow";
+				TargetAttributes = {
+					8A3A8C65208B234C00CA3F48 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					8A3A8C7C208B234E00CA3F48 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 8A3A8C65208B234C00CA3F48;
+					};
+					8A3A8C87208B234E00CA3F48 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 8A3A8C65208B234C00CA3F48;
+					};
+				};
+			};
+			buildConfigurationList = 8A3A8C61208B234C00CA3F48 /* Build configuration list for PBXProject "PocketLint" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A3A8C5D208B234C00CA3F48;
+			productRefGroup = 8A3A8C67208B234C00CA3F48 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A3A8C65208B234C00CA3F48 /* PocketLint */,
+				8A3A8C7C208B234E00CA3F48 /* PocketLintTests */,
+				8A3A8C87208B234E00CA3F48 /* PocketLintUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A3A8C64208B234C00CA3F48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A3A8C77208B234D00CA3F48 /* LaunchScreen.storyboard in Resources */,
+				8A0753102091964800376883 /* GoogleService-Info.plist in Resources */,
+				8A3A8C74208B234D00CA3F48 /* Assets.xcassets in Resources */,
+				8A3A8C6F208B234C00CA3F48 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A3A8C7B208B234E00CA3F48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A3A8C86208B234E00CA3F48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11A7F8D2C805C5B4F6C49D31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25AABA8080BCA2581AF5B9CF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5238F2C46A74B66D93607AF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PocketLintUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A6444C73A944ABD26EBF1CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D721588A93775CA4CE59307 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61C3D74BF5335614D8DDC3B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PocketLint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70DC8BC3413086E846477ABC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BBF63094FBA67755358318E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PocketLintTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1F737A16592245B32ADF76A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A3A8C62208B234C00CA3F48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A125AF62092F6C4007D983A /* SignUpViewController.swift in Sources */,
+				8A3A8C6A208B234C00CA3F48 /* AppDelegate.swift in Sources */,
+				8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */,
+				8A125AF42092E185007D983A /* ItemCollectionViewCell.swift in Sources */,
+				8A125AF22092DFD7007D983A /* LogInViewController.swift in Sources */,
+				8A3A8C72208B234C00CA3F48 /* PocketLint.xcdatamodeld in Sources */,
+				8A5BB60E20931F23005A0DF5 /* PocketCollectionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A3A8C79208B234E00CA3F48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A3A8C82208B234E00CA3F48 /* PocketLintTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A3A8C84208B234E00CA3F48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A3A8C8D208B234E00CA3F48 /* PocketLintUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A3A8C7F208B234E00CA3F48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A3A8C65208B234C00CA3F48 /* PocketLint */;
+			targetProxy = 8A3A8C7E208B234E00CA3F48 /* PBXContainerItemProxy */;
+		};
+		8A3A8C8A208B234E00CA3F48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A3A8C65208B234C00CA3F48 /* PocketLint */;
+			targetProxy = 8A3A8C89208B234E00CA3F48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8A3A8C6D208B234C00CA3F48 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A3A8C6E208B234C00CA3F48 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8A3A8C75208B234D00CA3F48 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A3A8C76208B234D00CA3F48 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8A3A8C8F208B234E00CA3F48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8A3A8C90208B234E00CA3F48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8A3A8C92208B234E00CA3F48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D76340445CBA2CF1C3BCB010 /* Pods-PocketLint.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 25AZ9VLSYQ;
+				INFOPLIST_FILE = PocketLint/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLint;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A3A8C93208B234E00CA3F48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7B2054B9D6C2DBF0268EE79 /* Pods-PocketLint.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 25AZ9VLSYQ;
+				INFOPLIST_FILE = PocketLint/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLint;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8A3A8C95208B234E00CA3F48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B04AE30F5AACBAE5EBB60FD /* Pods-PocketLintTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PocketLintTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocketLint.app/PocketLint";
+			};
+			name = Debug;
+		};
+		8A3A8C96208B234E00CA3F48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A7A1CC0F498551EB06CB6C0 /* Pods-PocketLintTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PocketLintTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocketLint.app/PocketLint";
+			};
+			name = Release;
+		};
+		8A3A8C98208B234E00CA3F48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6A82094218BC2FCA65F2FF0 /* Pods-PocketLintUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PocketLintUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PocketLint;
+			};
+			name = Debug;
+		};
+		8A3A8C99208B234E00CA3F48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8880C47106C9DF5BF215EDD8 /* Pods-PocketLintUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PocketLintUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PocketLint;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A3A8C61208B234C00CA3F48 /* Build configuration list for PBXProject "PocketLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A3A8C8F208B234E00CA3F48 /* Debug */,
+				8A3A8C90208B234E00CA3F48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A3A8C91208B234E00CA3F48 /* Build configuration list for PBXNativeTarget "PocketLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A3A8C92208B234E00CA3F48 /* Debug */,
+				8A3A8C93208B234E00CA3F48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A3A8C94208B234E00CA3F48 /* Build configuration list for PBXNativeTarget "PocketLintTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A3A8C95208B234E00CA3F48 /* Debug */,
+				8A3A8C96208B234E00CA3F48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A3A8C97208B234E00CA3F48 /* Build configuration list for PBXNativeTarget "PocketLintUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A3A8C98208B234E00CA3F48 /* Debug */,
+				8A3A8C99208B234E00CA3F48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8A3A8C70208B234C00CA3F48 /* PocketLint.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A3A8C71208B234C00CA3F48 /* PocketLint.xcdatamodel */,
+			);
+			currentVersion = 8A3A8C71208B234C00CA3F48 /* PocketLint.xcdatamodel */;
+			path = PocketLint.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8A3A8C5E208B234C00CA3F48 /* Project object */;
+}
