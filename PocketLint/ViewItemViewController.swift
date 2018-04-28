@@ -20,6 +20,7 @@ class ViewItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Update view with item content
         // Add image
         let image = UIImage(data:item?.image as! Data)
@@ -31,9 +32,14 @@ class ViewItemViewController: UIViewController {
         
         // Set date label
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm a dd/MM/YYY"
+        formatter.dateFormat = "HH:mm dd/MM/YYY"
         let date = formatter.string(from: (item?.date)!)
         dateLabel.text = date
+        
+        // Add pin to map
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: (item?.latitude)!, longitude: (item?.longitude)!)
+        locationMapView.addAnnotation(annotation)
         
     }
 
@@ -41,6 +47,9 @@ class ViewItemViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Map Stuff
+    
     
 
     /*

@@ -26,6 +26,8 @@
 		8A5BB61420934BA4005A0DF5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5BB61320934BA4005A0DF5 /* CoreData.framework */; };
 		8A5BB61620935410005A0DF5 /* AddEditItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */; };
 		8A5BB61820935C38005A0DF5 /* ViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */; };
+		8A5BB61A20943BDF005A0DF5 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */; };
+		8A5BB61C20944B41005A0DF5 /* ViewItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */; };
 		8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */; };
 		F5A2E401B52F40864D17C45E /* Pods_PocketLintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +78,8 @@
 		8A5BB61320934BA4005A0DF5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditItemTableViewController.swift; sourceTree = "<group>"; };
 		8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemViewController.swift; sourceTree = "<group>"; };
+		8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
+		8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemTableViewController.swift; sourceTree = "<group>"; };
 		8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketViewController.swift; sourceTree = "<group>"; };
 		8B04AE30F5AACBAE5EBB60FD /* Pods-PocketLintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +159,8 @@
 				8A125AF52092F6C4007D983A /* SignUpViewController.swift */,
 				8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */,
 				8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */,
+				8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */,
+				8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */,
 			);
 			path = PocketLint;
 			sourceTree = "<group>";
@@ -512,7 +518,9 @@
 				8A5BB61820935C38005A0DF5 /* ViewItemViewController.swift in Sources */,
 				8A5BB6122093466E005A0DF5 /* Item+CoreDataProperties.swift in Sources */,
 				8A5BB6112093466E005A0DF5 /* Item+CoreDataClass.swift in Sources */,
+				8A5BB61C20944B41005A0DF5 /* ViewItemTableViewController.swift in Sources */,
 				8A5BB60E20931F23005A0DF5 /* PocketCollectionViewController.swift in Sources */,
+				8A5BB61A20943BDF005A0DF5 /* LocationAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

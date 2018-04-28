@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import MapKit
 
-class AddEditItemTableViewController: UITableViewController {
+class AddEditItemTableViewController: UITableViewController, CLLocationManagerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textContentTextField: UITextView!
+    @IBOutlet weak var saveLocationToggle: UISwitch!
     
     // Managed Object Context and Initilisation Constructure for using Core Data.
     private var managedObjectContext: NSManagedObjectContext
@@ -23,11 +25,38 @@ class AddEditItemTableViewController: UITableViewController {
     }
     
     var photo: UIImage?
+    var item: Item?
+    var newItem = true
+    
+    // Location variables
+    var locationManager: CLLocationManager = CLLocationManager()
+    var currentLocation: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = photo
+        if ((photo) != nil) {
+            self.title = "Add Item"
+            // Set photo
+            imageView.image = photo
+        }
+        else {
+            self.title = "Edit Item"
+            // Add item info
+            imageView.image = UIImage(data:item?.image as! Data)
+            titleTextField.text = item?.title
+            textContentTextField.text = item?.textContent
+            if (item?.longitude == 0 && item?.latitude == 0) {
+                saveLocationToggle.isOn = false
+            }
+            newItem = false
+        }
+        // Set up location
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
 
     }
 
@@ -36,20 +65,36 @@ class AddEditItemTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let loc: CLLocation = locations.last!
+        currentLocation = loc.coordinate
+    }
+    
     @IBAction func cancelItem(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveItem(_ sender: Any) {
-        // Create new Item
-        let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: managedObjectContext) as? Item
+        
+        if (newItem) {
+            // Create new Item
+            item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: managedObjectContext) as? Item
+            let imageData = UIImagePNGRepresentation(photo!) as NSData?
+            item?.image = imageData
+        }
+        
         item?.title = titleTextField.text
-        let imageData = UIImagePNGRepresentation(photo!) as NSData?
-        item?.image = imageData
         item?.date = Date()
-        item?.latitude = 0
-        item?.longitude = 0
         item?.textContent = textContentTextField.text
+        
+        if ((currentLocation) != nil && saveLocationToggle.isOn) {
+            item?.latitude = Double(currentLocation!.latitude)
+            item?.longitude = Double(currentLocation!.longitude)
+        }
+        else {
+            item?.latitude = 0
+            item?.longitude = 0
+        }
         
         // Save item to Core Data
         do {
@@ -66,7 +111,7 @@ class AddEditItemTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

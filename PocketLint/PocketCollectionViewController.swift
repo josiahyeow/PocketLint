@@ -138,7 +138,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             photo = pickedImage
         }
-        dismiss(animated: true, completion: {
+        dismiss(animated: false, completion: {
             self.performSegue(withIdentifier: "addItemSegue", sender: Any?.self)
         })
     }
@@ -220,9 +220,30 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
         
         // Configure the cell
-        cell.backgroundColor = UIColor.lightGray
+        
+        // Add cell styling
+        cell.contentView.layer.cornerRadius = 14.0
+        cell.contentView.layer.masksToBounds = true;
+        
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width:0,height: 0)
+        cell.layer.shadowRadius = 8.0
+        cell.layer.shadowOpacity = 0.35
+        cell.layer.masksToBounds = false;
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+ 
+        // Set Image
         let imageData = itemList[indexPath.row].image as Data?
         cell.imageView.image = UIImage(data: imageData!)
+        
+        // Set Date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm dd/MM/YYY"
+        let date = formatter.string(from: (itemList[indexPath.row].date)!)
+        cell.dateLabel.text = date
+        
+        // Set Title
+        cell.titleLabel.text = itemList[indexPath.row].title
         
         return cell
     }
@@ -236,7 +257,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        return CGSize(width: widthPerItem, height: widthPerItem + widthPerItem/3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
@@ -267,7 +288,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         
         // View Item Segue
         if segue.identifier == "viewItemSegue" {
-            if let destinationVC = segue.destination as? ViewItemViewController {
+            if let destinationVC = segue.destination as? ViewItemTableViewController {
                 let cell = sender as! UICollectionViewCell
                 let indexPath = self.collectionView!.indexPath(for: cell)
                 print(indexPath!)
@@ -310,3 +331,4 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     */
 
 }
+
