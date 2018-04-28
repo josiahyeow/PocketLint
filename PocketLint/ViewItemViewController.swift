@@ -20,18 +20,20 @@ class ViewItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Update view with item content
-        //imageView.image = image
+        // Add image
+        let image = UIImage(data:item?.image as! Data)
+        imageView.image = image
         
+        // Add Text
         titleLabel.text = item?.title
         textContentTextView.text = item?.textContent
         
         // Set date label
-        //let formatter = DateFormatter()
-        //formatter.dateFormat = "HH:mm a DD,MM,YYYY"
-        //let date = formatter.string(from: (item?.date)!)
-        //dateLabel.text = date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm a dd/MM/YYY"
+        let date = formatter.string(from: (item?.date)!)
+        dateLabel.text = date
         
     }
 

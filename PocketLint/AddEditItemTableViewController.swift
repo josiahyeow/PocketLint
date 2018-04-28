@@ -43,13 +43,13 @@ class AddEditItemTableViewController: UITableViewController {
     @IBAction func saveItem(_ sender: Any) {
         // Create new Item
         let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: managedObjectContext) as? Item
-        item?.title = ""
+        item?.title = titleTextField.text
         let imageData = UIImagePNGRepresentation(photo!) as NSData?
         item?.image = imageData
         item?.date = Date()
         item?.latitude = 0
         item?.longitude = 0
-        item?.textContent = ""
+        item?.textContent = textContentTextField.text
         
         // Save item to Core Data
         do {

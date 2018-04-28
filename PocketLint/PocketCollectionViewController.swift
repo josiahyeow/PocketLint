@@ -270,7 +270,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
             if let destinationVC = segue.destination as? ViewItemViewController {
                 let cell = sender as! UICollectionViewCell
                 let indexPath = self.collectionView!.indexPath(for: cell)
-                destinationVC.item = itemList[itemList.count - 1]
+                print(indexPath!)
+                destinationVC.item = itemList[indexPath![1]]
             }
         }
     }

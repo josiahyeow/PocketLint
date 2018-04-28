@@ -69,7 +69,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="S2e-yK-r9R" kind="presentation" identifier="addItemSegue" id="uaU-h7-yid"/>
+                        <segue destination="S2e-yK-r9R" kind="presentation" identifier="addItemSegue" modalTransitionStyle="crossDissolve" id="uaU-h7-yid"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="411-1m-kp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
