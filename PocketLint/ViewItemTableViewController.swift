@@ -8,6 +8,9 @@
 
 import UIKit
 import MapKit
+import Firebase
+import FirebaseDatabase
+import FirebaseStorage
 
 class ViewItemTableViewController: UITableViewController {
 
@@ -18,6 +21,7 @@ class ViewItemTableViewController: UITableViewController {
     @IBOutlet weak var locationMapView: MKMapView!
     
     var item: Item?
+    var itemDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +44,8 @@ class ViewItemTableViewController: UITableViewController {
         // Set date label
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm dd/MM/YYY"
-        let date = formatter.string(from: (item?.date)!)
-        dateLabel.text = date
+        itemDate = formatter.string(from: (item?.date)!)
+        dateLabel.text = itemDate
         
         // Show map if longitude and latitude was saved
         if(((item?.longitude) != 0) && ((item?.latitude) != 0)) {
@@ -67,6 +71,10 @@ class ViewItemTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "editItemSegue", sender: Any?.self)
         })
         
+        let uploadButton = UIAlertAction(title: "Upload", style: .default, handler: { (action) -> Void in
+            self.uploadItemToFirebase()
+        })
+        
         let  deleteButton = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
             print("Delete button tapped")
         })
@@ -77,12 +85,69 @@ class ViewItemTableViewController: UITableViewController {
         
         
         alertController.addAction(editButton)
+        alertController.addAction(uploadButton)
         alertController.addAction(deleteButton)
         alertController.addAction(cancelButton)
         
         self.navigationController!.present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - Upload item to Firebase
+    
+    private func uploadItemToFirebase() {
+        let databaseRef = Database.database().reference().child("images")
+        let storageRef = Storage.storage()
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("Firebase User ID is invalid.")
+            return
+        }
+        
+        let date = UInt(Date().timeIntervalSince1970)
+        var data = Data()
+        data = item?.image as! Data
+        
+        // Convert Core Data Entity into Dictionary
+        let uploadItem: NSDictionary = [
+            "title" : item?.title as! NSString,
+            "textContent" : item?.textContent as! NSString,
+            "latitude" : item?.latitude as! NSNumber,
+            "longitude" : item?.longitude as! NSNumber
+        ]
+        
+        let imageRef = storageRef.reference().child("\(userID)/\(date).jpg")
+        
+        // Set upload path
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        imageRef.putData(data, metadata: metaData) {(metaData,error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.displayMessage("Error", message: "Could not upload item.")
+                return
+            }
+            else {
+                // Upload item data
+                databaseRef.child("users").child(userID).child("\(userID)/\(date)").setValue(uploadItem)
+                
+                // Store download URL of image
+                let downloadURL = metaData!.downloadURL()!.absoluteString
+                databaseRef.child("users").child(userID).child("\(userID)/\(date)").updateChildValues(["image": downloadURL])
+                self.displayMessage("Success", message: "Photo uploaded!")
+
+            }
+        }
+    }
+    
+    // Error Message Template
+    
+    func displayMessage(_ title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     // MARK: - Table view data source
 
