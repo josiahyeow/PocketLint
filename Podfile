@@ -10,8 +10,12 @@ target 'PocketLint' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Firebase/MLVision'
   pod 'IQKeyboardManagerSwift'
-
+  
+  # Pod for Google Vision API
+  pod 'Firebase/MLVisionTextModel'
+  
   target 'PocketLintTests' do
     inherit! :search_paths
     # Pods for testing

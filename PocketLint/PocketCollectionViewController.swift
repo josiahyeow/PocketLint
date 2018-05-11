@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 import Firebase
-import FirebaseDatabase
-import FirebaseStorage
 
 class PocketCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -185,7 +183,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
             }
             else {
                 // Store download URL
-                let downloadURL = metaData!.downloadURL()!.absoluteString
+                let downloadURL = StorageReference.downloadURL(completion:)
                 self.databaseRef.child("users").child(userID).updateChildValues(["\(date)": downloadURL])
                 print("Photo uploaded!")
                 //self.navigationController?.popViewController(animated: true)

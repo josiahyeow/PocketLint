@@ -134,7 +134,7 @@ class PocketViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
             else {
                 // Store download URL
-                let downloadURL = metaData!.downloadURL()!.absoluteString
+                let downloadURL = StorageReference.downloadURL(completion:)
                 self.databaseRef.child("users").child(userID).updateChildValues(["\(date)": downloadURL])
                 print("Photo uploaded!")
                 self.navigationController?.popViewController(animated: true)

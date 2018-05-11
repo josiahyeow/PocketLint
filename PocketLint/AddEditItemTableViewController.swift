@@ -9,12 +9,18 @@
 import UIKit
 import CoreData
 import MapKit
+import Firebase
+
 
 class AddEditItemTableViewController: UITableViewController, CLLocationManagerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textContentTextField: UITextView!
     @IBOutlet weak var saveLocationToggle: UISwitch!
+    
+    // Text recognition variables
+    lazy var vision = Vision.vision()
+    
     
     // Managed Object Context and Initilisation Constructure for using Core Data.
     private var managedObjectContext: NSManagedObjectContext
@@ -58,6 +64,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +76,44 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         let loc: CLLocation = locations.last!
         currentLocation = loc.coordinate
     }
+    
+    @IBAction func detectButton(_ sender: Any) {
+        self.detectItem()
+        self.detectText()
+    }
+    
+    func detectText() {
+        let textDetector = vision.cloudTextDetector()  // Check console for errors.
+        let image = VisionImage(image: imageView.image!)
+        
+        textDetector.detect(in: image) { (cloudText, error) in
+            guard error == nil, let cloudText = cloudText else {
+                let errorString = error?.localizedDescription
+                print("Text detection failed with error: \(String(describing: errorString))")
+                return
+            }
+            
+            // Recognized and extracted text
+            self.textContentTextField.text = cloudText.text
+            
+        }
+    }
+    
+    func detectItem() {
+        let labelDetector = vision.cloudLabelDetector()  // Check console for errors.
+        let image = VisionImage(image: imageView.image!)
+        
+        labelDetector.detect(in: image) { (labels: [VisionCloudLabel]?, error: Error?) in
+            guard error == nil, let labels = labels, !labels.isEmpty else {
+                let errorString = error?.localizedDescription
+                print("Item detection failed with error: \(String(describing: errorString))")
+                return
+            }
+            
+            for label in labels {
+                self.titleTextField.text = label.label
+            }
+        }    }
     
     @IBAction func cancelItem(_ sender: Any) {
         dismiss(animated: true, completion: nil)

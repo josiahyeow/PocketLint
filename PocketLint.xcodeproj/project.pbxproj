@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E17807846B9F76F2055D6FC /* Pods_PocketLintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458E24F7AB8917B717D278FA /* Pods_PocketLintTests.framework */; };
-		8A0753102091964800376883 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A07530F2091964800376883 /* GoogleService-Info.plist */; };
 		8A125AF22092DFD7007D983A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF12092DFD7007D983A /* LogInViewController.swift */; };
 		8A125AF42092E185007D983A /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */; };
 		8A125AF62092F6C4007D983A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF52092F6C4007D983A /* SignUpViewController.swift */; };
@@ -28,7 +27,9 @@
 		8A5BB61820935C38005A0DF5 /* ViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */; };
 		8A5BB61A20943BDF005A0DF5 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */; };
 		8A5BB61C20944B41005A0DF5 /* ViewItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */; };
+		8A5BB61E20969365005A0DF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */; };
 		8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */; };
+		8AFE01A420A3236B0069BD51 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFE01A320A3236B0069BD51 /* FirebaseCore.framework */; };
 		F5A2E401B52F40864D17C45E /* Pods_PocketLintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +54,6 @@
 		458E24F7AB8917B717D278FA /* Pods_PocketLintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7A1CC0F498551EB06CB6C0 /* Pods-PocketLintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests.release.xcconfig"; sourceTree = "<group>"; };
 		8880C47106C9DF5BF215EDD8 /* Pods-PocketLintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8A07530F2091964800376883 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A125AF12092DFD7007D983A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A125AF52092F6C4007D983A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +80,13 @@
 		8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemViewController.swift; sourceTree = "<group>"; };
 		8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemTableViewController.swift; sourceTree = "<group>"; };
+		8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketViewController.swift; sourceTree = "<group>"; };
+		8AFE019B20A320960069BD51 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFE019D20A320FA0069BD51 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFE019F20A320FA0069BD51 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFE01A120A320FA0069BD51 /* FirebaseStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFE01A320A3236B0069BD51 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B04AE30F5AACBAE5EBB60FD /* Pods-PocketLintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A82094218BC2FCA65F2FF0 /* Pods-PocketLintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFE01A420A3236B0069BD51 /* FirebaseCore.framework in Frameworks */,
 				8A5BB61420934BA4005A0DF5 /* CoreData.framework in Frameworks */,
 				8A5BB60C209308C6005A0DF5 /* Pods_PocketLint.framework in Frameworks */,
 			);
@@ -143,24 +150,24 @@
 		8A3A8C68208B234C00CA3F48 /* PocketLint */ = {
 			isa = PBXGroup;
 			children = (
+				8A3A8C69208B234C00CA3F48 /* AppDelegate.swift */,
 				8A5BB60F2093466E005A0DF5 /* Item+CoreDataClass.swift */,
 				8A5BB6102093466E005A0DF5 /* Item+CoreDataProperties.swift */,
-				8A07530F2091964800376883 /* GoogleService-Info.plist */,
-				8A3A8C69208B234C00CA3F48 /* AppDelegate.swift */,
-				8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */,
+				8A125AF52092F6C4007D983A /* SignUpViewController.swift */,
+				8A125AF12092DFD7007D983A /* LogInViewController.swift */,
 				8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */,
+				8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */,
+				8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */,
+				8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */,
+				8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */,
 				8A3A8C6D208B234C00CA3F48 /* Main.storyboard */,
-				8A3A8C73208B234D00CA3F48 /* Assets.xcassets */,
 				8A3A8C75208B234D00CA3F48 /* LaunchScreen.storyboard */,
 				8A3A8C78208B234D00CA3F48 /* Info.plist */,
+				8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */,
 				8A3A8C70208B234C00CA3F48 /* PocketLint.xcdatamodeld */,
-				8A125AF12092DFD7007D983A /* LogInViewController.swift */,
-				8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */,
-				8A125AF52092F6C4007D983A /* SignUpViewController.swift */,
-				8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */,
+				8A3A8C73208B234D00CA3F48 /* Assets.xcassets */,
+				8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */,
 				8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */,
-				8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */,
-				8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */,
 			);
 			path = PocketLint;
 			sourceTree = "<group>";
@@ -199,6 +206,11 @@
 		F5E357F66AE1F974DEE1FBFA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AFE01A320A3236B0069BD51 /* FirebaseCore.framework */,
+				8AFE019D20A320FA0069BD51 /* FirebaseAuth.framework */,
+				8AFE019F20A320FA0069BD51 /* FirebaseDatabase.framework */,
+				8AFE01A120A320FA0069BD51 /* FirebaseStorage.framework */,
+				8AFE019B20A320960069BD51 /* FirebaseCore.framework */,
 				8A5BB61320934BA4005A0DF5 /* CoreData.framework */,
 				8A5BB60B209308C6005A0DF5 /* Pods_PocketLint.framework */,
 				8A5BB60920930878005A0DF5 /* IQKeyboardManagerSwift.framework */,
@@ -240,8 +252,6 @@
 				8A3A8C79208B234E00CA3F48 /* Sources */,
 				8A3A8C7A208B234E00CA3F48 /* Frameworks */,
 				8A3A8C7B208B234E00CA3F48 /* Resources */,
-				5A6444C73A944ABD26EBF1CA /* [CP] Embed Pods Frameworks */,
-				70DC8BC3413086E846477ABC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,8 +271,6 @@
 				8A3A8C84208B234E00CA3F48 /* Sources */,
 				8A3A8C85208B234E00CA3F48 /* Frameworks */,
 				8A3A8C86208B234E00CA3F48 /* Resources */,
-				5D721588A93775CA4CE59307 /* [CP] Embed Pods Frameworks */,
-				25AABA8080BCA2581AF5B9CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -323,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3A8C77208B234D00CA3F48 /* LaunchScreen.storyboard in Resources */,
-				8A0753102091964800376883 /* GoogleService-Info.plist in Resources */,
+				8A5BB61E20969365005A0DF5 /* GoogleService-Info.plist in Resources */,
 				8A3A8C74208B234D00CA3F48 /* Assets.xcassets in Resources */,
 				8A3A8C6F208B234C00CA3F48 /* Main.storyboard in Resources */,
 			);
@@ -354,37 +362,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		25AABA8080BCA2581AF5B9CF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5238F2C46A74B66D93607AF4 /* [CP] Check Pods Manifest.lock */ = {
@@ -405,36 +402,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5A6444C73A944ABD26EBF1CA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5D721588A93775CA4CE59307 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		61C3D74BF5335614D8DDC3B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,21 +418,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70DC8BC3413086E846477ABC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9BBF63094FBA67755358318E /* [CP] Check Pods Manifest.lock */ = {
@@ -492,9 +444,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PocketLint/Pods-PocketLint-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVTextDetectorResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVTextDetectorResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

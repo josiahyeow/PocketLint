@@ -9,8 +9,6 @@
 import UIKit
 import MapKit
 import Firebase
-import FirebaseDatabase
-import FirebaseStorage
 
 class ViewItemTableViewController: UITableViewController {
 
@@ -54,6 +52,7 @@ class ViewItemTableViewController: UITableViewController {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: (item?.latitude)!, longitude: (item?.longitude)!)
             locationMapView.addAnnotation(annotation)
+            locationMapView.showAnnotations([annotation], animated: true)
         }
     }
 
@@ -117,6 +116,8 @@ class ViewItemTableViewController: UITableViewController {
         
         let imageRef = storageRef.reference().child("\(userID)/\(date).jpg")
         
+        var downloadURL: URL!
+        
         // Set upload path
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
@@ -131,7 +132,14 @@ class ViewItemTableViewController: UITableViewController {
                 databaseRef.child("users").child(userID).child("\(userID)/\(date)").setValue(uploadItem)
                 
                 // Store download URL of image
-                let downloadURL = metaData!.downloadURL()!.absoluteString
+                imageRef.downloadURL(completion: { url, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        downloadURL = url!
+                    }
+                })
+                
                 databaseRef.child("users").child(userID).child("\(userID)/\(date)").updateChildValues(["image": downloadURL])
                 self.displayMessage("Success", message: "Photo uploaded!")
 
