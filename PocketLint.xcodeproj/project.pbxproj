@@ -20,8 +20,6 @@
 		8A3A8C8D208B234E00CA3F48 /* PocketLintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A8C8C208B234E00CA3F48 /* PocketLintUITests.swift */; };
 		8A5BB60C209308C6005A0DF5 /* Pods_PocketLint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5BB60B209308C6005A0DF5 /* Pods_PocketLint.framework */; };
 		8A5BB60E20931F23005A0DF5 /* PocketCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */; };
-		8A5BB6112093466E005A0DF5 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB60F2093466E005A0DF5 /* Item+CoreDataClass.swift */; };
-		8A5BB6122093466E005A0DF5 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB6102093466E005A0DF5 /* Item+CoreDataProperties.swift */; };
 		8A5BB61420934BA4005A0DF5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5BB61320934BA4005A0DF5 /* CoreData.framework */; };
 		8A5BB61620935410005A0DF5 /* AddEditItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */; };
 		8A5BB61820935C38005A0DF5 /* ViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */; };
@@ -30,6 +28,7 @@
 		8A5BB61E20969365005A0DF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */; };
 		8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */; };
 		8AFE01A420A3236B0069BD51 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFE01A320A3236B0069BD51 /* FirebaseCore.framework */; };
+		8AFE01A620A52D900069BD51 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE01A520A52D900069BD51 /* Item.swift */; };
 		F5A2E401B52F40864D17C45E /* Pods_PocketLintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +72,6 @@
 		8A5BB60920930878005A0DF5 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5BB60B209308C6005A0DF5 /* Pods_PocketLint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PocketLint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketCollectionViewController.swift; sourceTree = "<group>"; };
-		8A5BB60F2093466E005A0DF5 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8A5BB6102093466E005A0DF5 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8A5BB61320934BA4005A0DF5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditItemTableViewController.swift; sourceTree = "<group>"; };
 		8A5BB61720935C38005A0DF5 /* ViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +84,7 @@
 		8AFE019F20A320FA0069BD51 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE01A120A320FA0069BD51 /* FirebaseStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE01A320A3236B0069BD51 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFE01A520A52D900069BD51 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8B04AE30F5AACBAE5EBB60FD /* Pods-PocketLintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A82094218BC2FCA65F2FF0 /* Pods-PocketLintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,9 +148,8 @@
 		8A3A8C68208B234C00CA3F48 /* PocketLint */ = {
 			isa = PBXGroup;
 			children = (
+				8AFE01A520A52D900069BD51 /* Item.swift */,
 				8A3A8C69208B234C00CA3F48 /* AppDelegate.swift */,
-				8A5BB60F2093466E005A0DF5 /* Item+CoreDataClass.swift */,
-				8A5BB6102093466E005A0DF5 /* Item+CoreDataProperties.swift */,
 				8A125AF52092F6C4007D983A /* SignUpViewController.swift */,
 				8A125AF12092DFD7007D983A /* LogInViewController.swift */,
 				8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */,
@@ -467,12 +464,11 @@
 				8A125AF62092F6C4007D983A /* SignUpViewController.swift in Sources */,
 				8A3A8C6A208B234C00CA3F48 /* AppDelegate.swift in Sources */,
 				8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */,
+				8AFE01A620A52D900069BD51 /* Item.swift in Sources */,
 				8A125AF42092E185007D983A /* ItemCollectionViewCell.swift in Sources */,
 				8A125AF22092DFD7007D983A /* LogInViewController.swift in Sources */,
 				8A3A8C72208B234C00CA3F48 /* PocketLint.xcdatamodeld in Sources */,
 				8A5BB61820935C38005A0DF5 /* ViewItemViewController.swift in Sources */,
-				8A5BB6122093466E005A0DF5 /* Item+CoreDataProperties.swift in Sources */,
-				8A5BB6112093466E005A0DF5 /* Item+CoreDataClass.swift in Sources */,
 				8A5BB61C20944B41005A0DF5 /* ViewItemTableViewController.swift in Sources */,
 				8A5BB60E20931F23005A0DF5 /* PocketCollectionViewController.swift in Sources */,
 				8A5BB61A20943BDF005A0DF5 /* LocationAnnotation.swift in Sources */,

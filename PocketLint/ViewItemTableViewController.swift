@@ -31,8 +31,7 @@ class ViewItemTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         // Update view with item content
         // Add image
-        let image = UIImage(data:item?.image as! Data)
-        imageView.image = image
+        imageView.image = item?.image
         
         // Add Text
         self.title = item?.title
@@ -71,7 +70,7 @@ class ViewItemTableViewController: UITableViewController {
         })
         
         let uploadButton = UIAlertAction(title: "Upload", style: .default, handler: { (action) -> Void in
-            self.uploadItemToFirebase()
+            //self.uploadItemToFirebase()
         })
         
         let  deleteButton = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
@@ -93,59 +92,6 @@ class ViewItemTableViewController: UITableViewController {
     
     // MARK: - Upload item to Firebase
     
-    private func uploadItemToFirebase() {
-        let databaseRef = Database.database().reference().child("images")
-        let storageRef = Storage.storage()
-        
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("Firebase User ID is invalid.")
-            return
-        }
-        
-        let date = UInt(Date().timeIntervalSince1970)
-        var data = Data()
-        data = item?.image as! Data
-        
-        // Convert Core Data Entity into Dictionary
-        let uploadItem: NSDictionary = [
-            "title" : item?.title as! NSString,
-            "textContent" : item?.textContent as! NSString,
-            "latitude" : item?.latitude as! NSNumber,
-            "longitude" : item?.longitude as! NSNumber
-        ]
-        
-        let imageRef = storageRef.reference().child("\(userID)/\(date).jpg")
-        
-        var downloadURL: URL!
-        
-        // Set upload path
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        imageRef.putData(data, metadata: metaData) {(metaData,error) in
-            if let error = error {
-                print(error.localizedDescription)
-                self.displayMessage("Error", message: "Could not upload item.")
-                return
-            }
-            else {
-                // Upload item data
-                databaseRef.child("users").child(userID).child("\(userID)/\(date)").setValue(uploadItem)
-                
-                // Store download URL of image
-                imageRef.downloadURL(completion: { url, error in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        downloadURL = url!
-                    }
-                })
-                
-                databaseRef.child("users").child(userID).child("\(userID)/\(date)").updateChildValues(["image": downloadURL])
-                self.displayMessage("Success", message: "Photo uploaded!")
-
-            }
-        }
-    }
     
     // Error Message Template
     

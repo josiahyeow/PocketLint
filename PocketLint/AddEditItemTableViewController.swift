@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import MapKit
 import Firebase
 
@@ -18,17 +17,14 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     @IBOutlet weak var textContentTextField: UITextView!
     @IBOutlet weak var saveLocationToggle: UISwitch!
     
+    
+    // Firebase database and storage variables
+    var databaseRef = Database.database().reference().child("users")
+    var storageRef = Storage.storage().reference().child("users")
+    
     // Text recognition variables
     lazy var vision = Vision.vision()
     
-    
-    // Managed Object Context and Initilisation Constructure for using Core Data.
-    private var managedObjectContext: NSManagedObjectContext
-    required init(coder aDecoder: NSCoder) {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        managedObjectContext = (appDelegate?.persistentContainer.viewContext)!
-        super.init(coder: aDecoder)!
-    }
     
     var photo: UIImage?
     var item: Item?
@@ -37,6 +33,16 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     // Location variables
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("Firebase User ID is invalid.")
+            return
+        }
+        // Store items in user's account folder
+        databaseRef = Database.database().reference().child("users").child("\(userID)")
+        storageRef = Storage.storage().reference().child("users").child("\(userID)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +55,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         else {
             self.title = "Edit Item"
             // Add item info
-            imageView.image = UIImage(data:item?.image as! Data)
+            imageView.image = item?.image
             titleTextField.text = item?.title
             textContentTextField.text = item?.textContent
             if (item?.longitude == 0 && item?.latitude == 0) {
@@ -120,36 +126,93 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     }
     
     @IBAction func saveItem(_ sender: Any) {
-        
-        if (newItem) {
-            // Create new Item
-            item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: managedObjectContext) as? Item
-            let imageData = UIImagePNGRepresentation(photo!) as NSData?
-            item?.image = imageData
-        }
-        
-        item?.title = titleTextField.text
-        item?.date = Date()
-        item?.textContent = textContentTextField.text
-        
-        if ((currentLocation) != nil && saveLocationToggle.isOn) {
-            item?.latitude = Double(currentLocation!.latitude)
-            item?.longitude = Double(currentLocation!.longitude)
+        if(newItem) {
+            addItemToFirebase()
         }
         else {
-            item?.latitude = 0
-            item?.longitude = 0
+            editItemOnFirebase()
         }
         
-        // Save item to Core Data
-        do {
-            try managedObjectContext.save()
-            print("Photo was saved to Core Data")
-            self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func fetchItem() {
+        
+    }
+    
+    private func addItemToFirebase() {
+        let filename = UInt(Date().timeIntervalSince1970)
+        let image = UIImageJPEGRepresentation(imageView.image!, 0.8)!
+        let title = titleTextField.text
+        let textContent = textContentTextField.text
+        var latitude = 0 as Double
+        var longitude = 0 as Double
+        
+        // Get user's location (if turned on)
+        if ((currentLocation) != nil && saveLocationToggle.isOn) {
+            latitude = Double(currentLocation!.latitude)
+            longitude = Double(currentLocation!.longitude)
         }
-        catch let error {
-            print("Could save Core Data: \(error)")
+        
+        // Convert Core Data Entity into Dictionary for upload
+        let uploadItem: NSDictionary = [
+            "title" : title as NSString? ?? "",
+            "textContent" : textContent as NSString? ?? "",
+            "latitude" : latitude as NSNumber? ?? 0,
+            "longitude" : longitude as NSNumber? ?? 0
+        ]
+        
+        
+        let imageRef = self.storageRef.child("\(filename).jpg")
+        var downloadURL: String!
+        
+        // Set upload path
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        imageRef.putData(image, metadata: metaData) {(metaData,error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.displayMessage("Error", message: "Could not upload item.")
+                return
+            }
+            else {
+                // Upload item data
+                self.databaseRef.child("\(filename)").setValue(uploadItem)
+                
+                // Store download URL of image
+                imageRef.downloadURL(completion: { url, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        downloadURL = url!.absoluteString
+                        self.databaseRef.child("\(filename)").setValue(uploadItem)
+                        self.databaseRef.child("\(filename)").updateChildValues(["image": downloadURL])
+                        self.dismiss(animated: true, completion: nil)
+                        //self.displayMessage("Success", message: "Photo uploaded!")
+                        
+                    }
+                })
+            }
         }
+    }
+    
+    private func editItemOnFirebase() {
+        let filename = item?.filename
+        let title = titleTextField.text
+        let textContent = textContentTextField.text
+        
+        // Update item in database
+        self.databaseRef.child("\(filename!)").updateChildValues(["title": title ?? "", "textContent": textContent ?? ""])
+    }
+    
+    // Error Message Template
+    
+    func displayMessage(_ title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+
     }
     
     // MARK: - Table view data source

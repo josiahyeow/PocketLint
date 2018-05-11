@@ -12,22 +12,8 @@ import Firebase
 
 class PocketCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
-    // Toggle Firebase usage
-    var firebaseSync = false
-    
-    // Managed Object Context and Initilisation Constructure for using Core Data.
-    private var managedObjectContext: NSManagedObjectContext
-    required init(coder aDecoder: NSCoder) {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        managedObjectContext = (appDelegate?.persistentContainer.viewContext)!
-        super.init(coder: aDecoder)!
-    }
-    
-    // Core Data variables
-    var item: Item?
-    
     // Firebase Storage and Database
-    var databaseRef = Database.database().reference().child("images")
+    var databaseRef = Database.database().reference()
     var storageRef = Storage.storage()
     
     // Initialise list to store images and image urls
@@ -42,18 +28,24 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     
     // Photo capture variables
     private var photo: UIImage?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("Firebase User ID is invalid.")
+            return
+        }
+        // Store items in user's account folder
+        databaseRef = Database.database().reference().child("users").child("\(userID)")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        fetchItemsFromCoreData()
+        self.fetchItemsFromFirebase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        fetchItemsFromCoreData()
-        
-        self.collectionView?.reloadSections([0])
+        self.fetchItemsFromFirebase()
     
     }
 
@@ -64,56 +56,93 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     
     // MARK: - Fetch Data
     
-    // Fetch items from Core Data
-    private func fetchItemsFromCoreData() {
-        // Fetch Items from Core Data
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Item")
-        do {
-            currentItems = try managedObjectContext.fetch(fetchRequest) as! [Item]
-            if currentItems.count == 0 {
-                // Insert test data here ()
-                currentItems = try managedObjectContext.fetch(fetchRequest) as! [Item]
-            }
-            itemList = currentItems     // Update local array with fetched books.
-        }
-        catch let error {
-            print("Could not fetch \(error)")
-        }
-    }
-    
     // Fetch items from Firebase
     private func fetchItemsFromFirebase() {
         // Load images from firebase
         let userID = Auth.auth().currentUser!.uid
         let userRef = databaseRef.child("users").child("\(userID)")
         
-        userRef.observeSingleEvent(of: .value, with: {(snapshot) in
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             guard let value = snapshot.value as? NSDictionary else {
                 return
             }
             
-            for(_, link) in value {
-                let url = link as! String
+            for(fileNameKey,itemValue) in value {
+                let itemValues = itemValue as? NSDictionary
+                let item = Item()
+                item.filename = fileNameKey as! String
+                item.imageURL = itemValues!["image"] as! String
+                item.title = itemValues!["title"] as! String
+                item.textContent = itemValues!["textContent"] as! String
+                item.latitude = itemValues!["latitude"] as! Double
+                item.longitude = itemValues!["longitude"] as! Double
                 
-                if (!self.itemURLList.contains(url)) {
-                    self.itemURLList.append(url)
-                    self.storageRef.reference(forURL: url).getData(maxSize: 5 * 1024 * 1024, completion: {
-                        (data, error) in
-                        if let error = error {
-                            print(error.localizedDescription)
-                        } else {
-                            //let image = UIImage(data: data!)
-                            //self.itemList.append(image!)
+                if(!self.itemList.contains(item)) {
+                    if(self.hasLocalImage(item: item)) {
+                        self.loadLocalImage(item: item)
+                        self.itemList.append(item)
+                        self.collectionView?.insertItems(at:[IndexPath(row: self.itemList.count - 1, section: 0)])
+                        self.collectionView?.reloadSections([0])
+                    }
+                    else {
+                        self.storageRef.reference(forURL: item.imageURL).getData(maxSize: 5 * 1024 * 1024, completion: {
+                            (data, error) in
+                            if let error = error {
+                                // print error
+                            } else {
+                                //let image = UIImage(data: data!)
+                                //self.itemList.append(image!)
+                            }
+                            self.saveLocalImage(item: item, imageData: data!)
+                            self.itemList.append(item)
                             self.collectionView?.insertItems(at: [IndexPath(row: self.itemList.count - 1, section: 0)])
                             self.collectionView?.reloadSections([0])
-                        }
-                    })
+                        })
+                    }
                 }
             }
+            
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    // MARK: - Cache Items
+    func hasLocalImage(item:Item) -> Bool {
+        var localFileExists:Bool = false
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) [0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent(item.filename) {
+            let filePath = pathComponent.path
+            
+            let fileManager = FileManager.default
+            localFileExists = fileManager.fileExists(atPath: filePath)
+        }
+        return localFileExists
+    }
+    
+    func loadLocalImage(item:Item) {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) [0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent(item.filename) {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            let fileData = fileManager.contents(atPath: filePath)
+            item.image = UIImage(data: fileData!)!
+        }
+    }
+    
+    func saveLocalImage(item: Item, imageData: Data) {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) [0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent(item.filename) {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
+        }
+        item.image = UIImage(data: imageData)!
+        
     }
     
     // MARK: - Take Photo
@@ -154,42 +183,6 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         self.dismiss(animated:true, completion: nil)
     }
     
-    // MARK: - Upload Photo to Firebase
-    
-    private func uploadItemToFirebase() {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            displayErrorMessage("Firebase User ID is invalid.")
-            return
-        }
-        guard let image = photo else {
-            displayErrorMessage("Cannot upload unitl a photo has been taken")
-            return
-        }
-        
-        let date = UInt(Date().timeIntervalSince1970)
-        var data = Data()
-        data = UIImageJPEGRepresentation(image, 0.8)!
-        
-        let imageRef = storageRef.reference().child("\(userID)/\(date).jpg")
-        
-        // Set upload path
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        imageRef.putData(data, metadata: metaData) {(metaData,error) in
-            if let error = error {
-                print(error.localizedDescription)
-                self.displayErrorMessage("Photo failed to upload")
-                return
-            }
-            else {
-                // Store download URL
-                let downloadURL = StorageReference.downloadURL(completion:)
-                self.databaseRef.child("users").child(userID).updateChildValues(["\(date)": downloadURL])
-                print("Photo uploaded!")
-                //self.navigationController?.popViewController(animated: true)
-            }
-        }
-    }
     
     // Error Message Template
     
@@ -231,13 +224,12 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
  
         // Set Image
-        let imageData = itemList[indexPath.row].image as Data?
-        cell.imageView.image = UIImage(data: imageData!)
+        cell.imageView.image = itemList[indexPath.row].image
         
         // Set Date
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm dd/MM/YYY"
-        let date = formatter.string(from: (itemList[indexPath.row].date)!)
+        let date = formatter.string(from: (itemList[indexPath.row].date))
         cell.dateLabel.text = date
         
         // Set Title

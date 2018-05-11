@@ -226,21 +226,12 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2p-zn-JDT">
-                                                    <rect key="frame" x="363" y="5" width="46" height="30"/>
-                                                    <state key="normal" title="Detect"/>
-                                                    <connections>
-                                                        <action selector="detectButton:" destination="YWj-CR-lPA" eventType="touchUpInside" id="JTD-Yc-c6K"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="vgP-cp-SkZ" secondAttribute="trailing" constant="16" id="Eys-wz-mbZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="vgP-cp-SkZ" secondAttribute="bottom" constant="16" id="LRe-gJ-DhM"/>
                                                 <constraint firstItem="vgP-cp-SkZ" firstAttribute="leading" secondItem="QAx-nj-CUZ" secondAttribute="leading" constant="16" id="WLc-yH-ilg"/>
-                                                <constraint firstItem="t2p-zn-JDT" firstAttribute="top" secondItem="QAx-nj-CUZ" secondAttribute="top" constant="5" id="ZD3-9f-S3m"/>
                                                 <constraint firstItem="vgP-cp-SkZ" firstAttribute="top" secondItem="QAx-nj-CUZ" secondAttribute="top" constant="16" id="sTr-y5-CtT"/>
-                                                <constraint firstAttribute="trailing" secondItem="t2p-zn-JDT" secondAttribute="trailing" constant="5" id="skQ-nI-eON"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
