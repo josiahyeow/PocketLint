@@ -19,7 +19,6 @@ class ViewItemTableViewController: UITableViewController {
     @IBOutlet weak var locationMapView: MKMapView!
     
     var item: Item?
-    var itemDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +39,11 @@ class ViewItemTableViewController: UITableViewController {
         
         // Set date label
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm dd/MM/YYY"
-        itemDate = formatter.string(from: (item?.date)!)
-        dateLabel.text = itemDate
+        //formatter.dateFormat = "h:mm a d MMM YYYY"
+        formatter.dateStyle = .medium
+        formatter.doesRelativeDateFormatting = true
+        let itemDate = formatter.string(from: (item?.date)!)
+        dateLabel.text = itemDate.uppercased()
         
         // Show map if longitude and latitude was saved
         if(((item?.longitude) != 0) && ((item?.latitude) != 0)) {

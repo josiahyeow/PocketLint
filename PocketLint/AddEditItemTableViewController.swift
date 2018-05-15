@@ -138,9 +138,18 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
     }
     
+    // Converts Date object to String
+    private func dateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        let date = formatter.string(from: (date))
+        return date
+    }
+    
     private func addItemToFirebase() {
         let filename = UInt(Date().timeIntervalSince1970)
         let image = UIImageJPEGRepresentation(imageView.image!, 0.8)!
+        let date = self.dateToString(date: Date())
         let title = titleTextField.text
         let textContent = textContentTextField.text
         var latitude = 0 as Double
@@ -154,6 +163,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
         // Convert Core Data Entity into Dictionary for upload
         let uploadItem: NSDictionary = [
+            "date": date as NSString,
             "title" : title as NSString? ?? "",
             "textContent" : textContent as NSString? ?? "",
             "latitude" : latitude as NSNumber? ?? 0,

@@ -52,6 +52,14 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     
     // MARK: - Fetch Data
     
+    // Convert date string to Date object
+    private func stringToDate(date: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        let date = formatter.date(from: (date))
+        return date!
+    }
+    
     // Fetch items from Firebase
     private func fetchItemsFromFirebase() {
         // Load images from firebase
@@ -69,6 +77,9 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                 let item = Item()
                 item.filename = fileNameKey as! String
                 item.imageURL = itemValues!["image"] as! String
+                
+                item.date = self.stringToDate(date: itemValues!["date"] as! String)
+                
                 item.title = itemValues!["title"] as! String
                 item.textContent = itemValues!["textContent"] as! String
                 item.latitude = itemValues!["latitude"] as! Double
@@ -234,10 +245,10 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         
         // Set Date
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm dd/MM/YYY"
+        formatter.dateStyle = .medium
+        formatter.doesRelativeDateFormatting = true
         let date = formatter.string(from: (itemList[indexPath.row].date))
-        cell.dateLabel.text = date
-        
+        cell.dateLabel.text = date.uppercased()
         // Set Title
         cell.titleLabel.text = itemList[indexPath.row].title
         
