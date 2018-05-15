@@ -17,6 +17,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     @IBOutlet weak var textContentTextField: UITextView!
     @IBOutlet weak var saveLocationToggle: UISwitch!
     
+    let defaults = UserDefaults.standard
     
     // Firebase database and storage variables
     var databaseRef = Database.database().reference().child("users")
@@ -63,17 +64,29 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
             }
             newItem = false
         }
+        
         // Set up location
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-
-        // Scan photo
-        if (newItem) {
-            self.detectItem()
-            self.detectText()
+        
+        // Get text detection value
+        if defaults.object(forKey: "textDetection") as! Bool {
+            // Scan photo
+            if (newItem) {
+                self.detectItem()
+                self.detectText()
+            }
+        }
+        
+        // Get save location value
+        if defaults.object(forKey: "saveLocation") as! Bool {
+            saveLocationToggle.isOn = true
+        }
+        else {
+            saveLocationToggle.isOn = false
         }
 
     }

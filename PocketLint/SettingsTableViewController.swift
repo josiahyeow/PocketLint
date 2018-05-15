@@ -11,6 +11,10 @@ import Firebase
 
 class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var sortOrderInputField: UITextField!
+    @IBOutlet weak var textDetectionSwitch: UISwitch!
+    @IBOutlet weak var saveLocationSwitch: UISwitch!
+    
+    let defaults = UserDefaults.standard
     
     let sortOptions = ["Newest First", "Oldest First"]
     
@@ -23,6 +27,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false
+        self.title = "Settings"
         
         self.tableView.allowsSelection = false
         
@@ -30,6 +35,31 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
         sortOptionsPickerView.dataSource = self
         
         sortOrderInputField.inputView = sortOptionsPickerView
+        
+        // Get sort option
+        sortOrderInputField.text = defaults.object(forKey: "sortOrder") as? String
+        
+        // Get text detection value
+        if defaults.object(forKey: "textDetection") as! Bool {
+            textDetectionSwitch.isOn = true
+        }
+        else {
+            textDetectionSwitch.isOn = false
+        }
+        
+        // Get save location value
+        if defaults.object(forKey: "saveLocation") as! Bool {
+            saveLocationSwitch.isOn = true
+        }
+        else {
+            saveLocationSwitch.isOn = false
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        defaults.set(sortOrderInputField.text, forKey: "sortOrder")
+        defaults.set(textDetectionSwitch.isOn, forKey: "textDetection")
+        defaults.set(saveLocationSwitch.isOn, forKey: "saveLocation")
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +110,11 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
             try Auth.auth().signOut()
         } catch {}
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    private func saveAndReturn() {
+        
+        navigationController?.popViewController(animated: true)
     }
 
     /*

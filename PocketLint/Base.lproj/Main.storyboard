@@ -126,7 +126,7 @@
                             <outlet property="delegate" destination="K08-HK-fBO" id="wkm-u1-OKT"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="My Pocket" id="P4X-QB-ccZ">
+                    <navigationItem key="navigationItem" title="My Pocket" largeTitleDisplayMode="always" id="P4X-QB-ccZ">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="cDr-qd-rGl">
                             <connections>
                                 <action selector="signOut:" destination="K08-HK-fBO" id="sXA-IG-HMs"/>
@@ -499,10 +499,10 @@
             </objects>
             <point key="canvasLocation" x="3317" y="-739"/>
         </scene>
-        <!--Settings Table View Controller-->
+        <!--Settings-->
         <scene sceneID="G1W-ny-p86">
             <objects>
-                <tableViewController id="EV5-6S-NIK" customClass="SettingsTableViewController" customModule="PocketLint" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Settings" id="EV5-6S-NIK" customClass="SettingsTableViewController" customModule="PocketLint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cbY-vK-ZE2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -649,7 +649,9 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="saveLocationSwitch" destination="saz-Lw-p7X" id="ctX-2Y-BIE"/>
                         <outlet property="sortOrderInputField" destination="5hC-hq-H9g" id="VVp-Wm-cKk"/>
+                        <outlet property="textDetectionSwitch" destination="q0T-8L-pCP" id="hap-tv-q8A"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cF6-Ao-405" userLabel="First Responder" sceneMemberID="firstResponder"/>
