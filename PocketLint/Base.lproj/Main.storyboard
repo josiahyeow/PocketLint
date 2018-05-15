@@ -9,6 +9,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -117,7 +118,10 @@
                                     <outlet property="dateLabel" destination="jPF-P0-Z3l" id="czK-wK-bCI"/>
                                     <outlet property="imageView" destination="hDj-0D-yC8" id="858-Yk-LOR"/>
                                     <outlet property="titleLabel" destination="gYd-hl-11E" id="i98-iM-rzE"/>
-                                    <segue destination="nja-Qh-Plp" kind="show" identifier="viewItemSegue" animates="NO" id="pRL-mv-ggI"/>
+                                    <segue destination="nja-Qh-Plp" kind="show" identifier="viewItemSegue" id="pRL-mv-ggI">
+                                        <segue key="commit" inheritsFrom="parent" id="TZL-Pk-9t1"/>
+                                        <segue key="preview" inheritsFrom="commit" id="S91-c0-KlJ"/>
+                                    </segue>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -1105,6 +1109,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="uaU-h7-yid"/>
+        <segue reference="pRL-mv-ggI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.90780466790000003" green="0.22138610480000001" blue="0.29083526129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

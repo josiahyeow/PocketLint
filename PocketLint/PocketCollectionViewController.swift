@@ -32,7 +32,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        
         
         // Get Firebase userID and database reference path
         guard let getUserID = Auth.auth().currentUser?.uid else {
@@ -44,13 +44,13 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        navigationController?.navigationBar.prefersLargeTitles = true
         self.fetchItemsFromFirebase()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
+        
     }
 
     override func didReceiveMemoryWarning() {
