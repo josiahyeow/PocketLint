@@ -69,10 +69,6 @@ class ViewItemTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "editItemSegue", sender: Any?.self)
         })
         
-        let uploadButton = UIAlertAction(title: "Upload", style: .default, handler: { (action) -> Void in
-            //self.uploadItemToFirebase()
-        })
-        
         let  deleteButton = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
             print("Delete button tapped")
         })
@@ -83,14 +79,11 @@ class ViewItemTableViewController: UITableViewController {
         
         
         alertController.addAction(editButton)
-        alertController.addAction(uploadButton)
         alertController.addAction(deleteButton)
         alertController.addAction(cancelButton)
         
         self.navigationController!.present(alertController, animated: true, completion: nil)
     }
-    
-    // MARK: - Upload item to Firebase
     
     
     // Error Message Template

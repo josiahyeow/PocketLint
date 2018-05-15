@@ -34,7 +34,9 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         guard let userID = Auth.auth().currentUser?.uid else {
             print("Firebase User ID is invalid.")
             return
@@ -42,10 +44,6 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         // Store items in user's account folder
         databaseRef = Database.database().reference().child("users").child("\(userID)")
         storageRef = Storage.storage().reference().child("users").child("\(userID)")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         if ((photo) != nil) {
             self.title = "Add Item"
@@ -70,6 +68,11 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 
+        // Scan photo
+        if (newItem) {
+            self.detectItem()
+            self.detectText()
+        }
 
     }
 
@@ -132,10 +135,6 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         else {
             editItemOnFirebase()
         }
-        
-    }
-    
-    private func fetchItem() {
         
     }
     
@@ -202,6 +201,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
         // Update item in database
         self.databaseRef.child("\(filename!)").updateChildValues(["title": title ?? "", "textContent": textContent ?? ""])
+        self.dismiss(animated: true, completion: nil)
     }
     
     // Error Message Template

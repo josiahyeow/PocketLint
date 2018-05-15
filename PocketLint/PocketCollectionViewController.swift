@@ -29,24 +29,20 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     // Photo capture variables
     private var photo: UIImage?
     
-    override func viewWillAppear(_ animated: Bool) {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("Firebase User ID is invalid.")
-            return
-        }
-        // Store items in user's account folder
-        databaseRef = Database.database().reference().child("users").child("\(userID)")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
         self.fetchItemsFromFirebase()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.fetchItemsFromFirebase()
-    
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,27 +74,37 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                 item.latitude = itemValues!["latitude"] as! Double
                 item.longitude = itemValues!["longitude"] as! Double
                 
-                if(!self.itemList.contains(item)) {
+                if(!self.itemList.contains(where: { $0.filename == item.filename })) {
                     if(self.hasLocalImage(item: item)) {
                         self.loadLocalImage(item: item)
                         self.itemList.append(item)
-                        self.collectionView?.insertItems(at:[IndexPath(row: self.itemList.count - 1, section: 0)])
+                        self.collectionView?.insertItems(at:[IndexPath(row: 0, section: 0)])
                         self.collectionView?.reloadSections([0])
                     }
                     else {
                         self.storageRef.reference(forURL: item.imageURL).getData(maxSize: 5 * 1024 * 1024, completion: {
                             (data, error) in
                             if let error = error {
-                                // print error
+                                print(error.localizedDescription)
                             } else {
-                                //let image = UIImage(data: data!)
-                                //self.itemList.append(image!)
+                                self.saveLocalImage(item: item, imageData: data!)
+                                self.itemList.append(item)
+                                self.collectionView?.insertItems(at: [IndexPath(row: 0, section: 0)])
+                                self.collectionView?.reloadSections([0])
                             }
-                            self.saveLocalImage(item: item, imageData: data!)
-                            self.itemList.append(item)
-                            self.collectionView?.insertItems(at: [IndexPath(row: self.itemList.count - 1, section: 0)])
-                            self.collectionView?.reloadSections([0])
                         })
+                    }
+                }
+                else {
+                    // Update title if changed
+                    if self.itemList.first(where:{ $0.filename == item.filename })?.title != item.title {
+                        self.itemList.first(where:{ $0.filename == item.filename })?.title = item.title
+                        self.collectionView?.reloadSections([0])
+                    }
+                    // Update textContent if changed
+                    if self.itemList.first(where:{ $0.filename == item.filename })?.textContent != item.textContent {
+                        self.itemList.first(where:{ $0.filename == item.filename })?.textContent = item.textContent
+                        self.collectionView?.reloadSections([0])
                     }
                 }
             }
