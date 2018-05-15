@@ -13,6 +13,7 @@ import Firebase
 class PocketCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     // Firebase Storage and Database
+    var userID: String?
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage()
     
@@ -33,6 +34,13 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        // Get Firebase userID and database reference path
+        guard let getUserID = Auth.auth().currentUser?.uid else {
+            displayErrorMessage("Firebase User ID is invalid.")
+            return
+        }
+        userID = getUserID
+        databaseRef = Database.database().reference().child("users").child("\(userID!)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +71,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     // Fetch items from Firebase
     private func fetchItemsFromFirebase() {
         // Load images from firebase
-        let userID = Auth.auth().currentUser!.uid
-        let userRef = databaseRef.child("users").child("\(userID)")
         
-        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             guard let value = snapshot.value as? NSDictionary else {
                 return
@@ -211,6 +217,30 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: Data Management
+    
+    // Deletes and item
+    func deleteItem(cell: ItemCollectionViewCell) {
+        if let indexPath = collectionView?.indexPath(for: cell) {
+            // Delete item from Firebase
+            let item = itemList[indexPath.item]
+            databaseRef.child("\(item.filename)").removeValue()
+            storageRef.reference(forURL: item.imageURL).delete(completion: { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                } else {
+                    // Delete item from itemList
+                    self.itemList.remove(at: indexPath.item)
+                    
+                    // Delete item from collectionView
+                    self.collectionView?.deleteItems(at: [indexPath])
+                }
+                })
+        }
+        
+    }
+    
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -230,13 +260,13 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         // Configure the cell
         
         // Add cell styling
-        cell.contentView.layer.cornerRadius = 14.0
+        cell.contentView.layer.cornerRadius = 20.0
         cell.contentView.layer.masksToBounds = true;
         
-        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowColor = UIColor.gray.cgColor
         cell.layer.shadowOffset = CGSize(width:0,height: 0)
-        cell.layer.shadowRadius = 8.0
-        cell.layer.shadowOpacity = 0.35
+        cell.layer.shadowRadius = 14.0
+        cell.layer.shadowOpacity = 0.6
         cell.layer.masksToBounds = false;
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
  
@@ -251,6 +281,9 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         cell.dateLabel.text = date.uppercased()
         // Set Title
         cell.titleLabel.text = itemList[indexPath.row].title
+        
+        // Connect cell to delegate which allows the menu button to function
+        cell.delegate = self
         
         return cell
     }
@@ -296,10 +329,12 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         // View Item Segue
         if segue.identifier == "viewItemSegue" {
             if let destinationVC = segue.destination as? ViewItemTableViewController {
-                let cell = sender as! UICollectionViewCell
+                let cell = sender as! ItemCollectionViewCell
                 let indexPath = self.collectionView!.indexPath(for: cell)
                 print(indexPath!)
                 destinationVC.item = itemList[indexPath![1]]
+                destinationVC.cell = cell
+                destinationVC.delegate = self
             }
         }
     }
@@ -337,5 +372,34 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     }
     */
 
+}
+
+// Delegate for ItemCollectionViewCell which allows item menu to function
+extension PocketCollectionViewController: ItemCollectionViewCellDelegate {
+    func showMenu(cell: ItemCollectionViewCell) {
+        let alertController = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
+        
+        
+        let  deleteButton = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
+            self.deleteItem(cell: cell)
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        
+        alertController.addAction(deleteButton)
+        alertController.addAction(cancelButton)
+        
+        self.navigationController!.present(alertController, animated: true, completion: nil)
+    }
+}
+
+// Delegate for ItemCollectionViewCell which allows item menu to function
+extension PocketCollectionViewController: ViewItemTableViewControllerDelegate {
+    func delete(cell: ItemCollectionViewCell) {
+        self.deleteItem(cell: cell)
+    }
 }
 

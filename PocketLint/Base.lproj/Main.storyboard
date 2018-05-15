@@ -28,41 +28,41 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="RBh-sZ-NG3" customClass="ItemCollectionViewCell" customModule="PocketLint" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="266"/>
+                                <rect key="frame" x="32" y="0.0" width="350" height="450"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="266"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="450"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaZ-Aq-e71" userLabel="Content View">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="266"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="450"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hDj-0D-yC8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="hDj-0D-yC8" secondAttribute="height" multiplier="1:1" id="9tM-P7-zRQ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nk2-ew-Dzm">
-                                                    <rect key="frame" x="0.0" y="200" width="200" height="66"/>
+                                                    <rect key="frame" x="0.0" y="350" width="350" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jPF-P0-Z3l">
-                                                            <rect key="frame" x="16" y="16" width="168" height="24"/>
+                                                            <rect key="frame" x="16" y="16" width="318" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gYd-hl-11E">
-                                                            <rect key="frame" x="16" y="44" width="168" height="28.666666666666671"/>
+                                                            <rect key="frame" x="16" y="44" width="318" height="28.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHD-2n-9xl">
-                                                            <rect key="frame" x="162" y="0.0" width="30" height="39"/>
+                                                            <rect key="frame" x="312" y="0.0" width="30" height="39"/>
                                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                                             <state key="normal" title="..."/>
                                                             <connections>
-                                                                <action selector="menuTapped:" destination="nja-Qh-Plp" eventType="touchUpInside" id="r3m-aj-2sP"/>
+                                                                <action selector="itemMenuTapped:" destination="RBh-sZ-NG3" eventType="touchUpInside" id="SpE-Lu-EsF"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -112,12 +112,12 @@
                                     <constraint firstAttribute="bottom" secondItem="oaZ-Aq-e71" secondAttribute="bottom" id="qIz-2d-xz6"/>
                                     <constraint firstItem="oaZ-Aq-e71" firstAttribute="leading" secondItem="RBh-sZ-NG3" secondAttribute="leading" id="xHR-da-F1s"/>
                                 </constraints>
-                                <size key="customSize" width="200" height="266"/>
+                                <size key="customSize" width="350" height="450"/>
                                 <connections>
                                     <outlet property="dateLabel" destination="jPF-P0-Z3l" id="czK-wK-bCI"/>
                                     <outlet property="imageView" destination="hDj-0D-yC8" id="858-Yk-LOR"/>
                                     <outlet property="titleLabel" destination="gYd-hl-11E" id="i98-iM-rzE"/>
-                                    <segue destination="nja-Qh-Plp" kind="show" identifier="viewItemSegue" id="pRL-mv-ggI"/>
+                                    <segue destination="nja-Qh-Plp" kind="show" identifier="viewItemSegue" animates="NO" id="pRL-mv-ggI"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -1049,7 +1049,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SR2-yU-D4G"/>
+        <segue reference="uaU-h7-yid"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.90780466790000003" green="0.22138610480000001" blue="0.29083526129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

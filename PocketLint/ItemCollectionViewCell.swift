@@ -8,8 +8,19 @@
 
 import UIKit
 
+protocol ItemCollectionViewCellDelegate: class {
+    func showMenu(cell: ItemCollectionViewCell)
+}
+
 class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    weak var delegate: ItemCollectionViewCellDelegate?
+    
+    @IBAction func itemMenuTapped(_ sender: Any) {
+        delegate?.showMenu(cell: self)
+    }
+    
 }

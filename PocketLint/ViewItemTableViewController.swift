@@ -10,6 +10,10 @@ import UIKit
 import MapKit
 import Firebase
 
+protocol ViewItemTableViewControllerDelegate: class {
+    func delete(cell: ItemCollectionViewCell)
+}
+
 class ViewItemTableViewController: UITableViewController {
 
     @IBOutlet weak var imageView: UIImageView!
@@ -19,6 +23,9 @@ class ViewItemTableViewController: UITableViewController {
     @IBOutlet weak var locationMapView: MKMapView!
     
     var item: Item?
+    var cell: ItemCollectionViewCell?
+    
+    weak var delegate: ViewItemTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +77,10 @@ class ViewItemTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "editItemSegue", sender: Any?.self)
         })
         
-        let  deleteButton = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
-            print("Delete button tapped")
+        let deleteButton = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
+            self.delegate?.delete(cell: self.cell!)
+            self.navigationController?.popViewController(animated: false)
+            
         })
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
