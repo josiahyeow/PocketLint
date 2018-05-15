@@ -14,6 +14,10 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     var handle: AuthStateDidChangeListenerHandle?
     
+    override func viewDidLoad() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener( { (auth, user) in

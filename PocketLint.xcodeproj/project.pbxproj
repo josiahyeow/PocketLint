@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E17807846B9F76F2055D6FC /* Pods_PocketLintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458E24F7AB8917B717D278FA /* Pods_PocketLintTests.framework */; };
+		8A08888B20AAD5BB00CBEC5C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A08888A20AAD5BB00CBEC5C /* SettingsTableViewController.swift */; };
 		8A125AF22092DFD7007D983A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF12092DFD7007D983A /* LogInViewController.swift */; };
 		8A125AF42092E185007D983A /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */; };
 		8A125AF62092F6C4007D983A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A125AF52092F6C4007D983A /* SignUpViewController.swift */; };
@@ -52,6 +53,7 @@
 		458E24F7AB8917B717D278FA /* Pods_PocketLintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7A1CC0F498551EB06CB6C0 /* Pods-PocketLintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintTests/Pods-PocketLintTests.release.xcconfig"; sourceTree = "<group>"; };
 		8880C47106C9DF5BF215EDD8 /* Pods-PocketLintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLintUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketLintUITests/Pods-PocketLintUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8A08888A20AAD5BB00CBEC5C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		8A125AF12092DFD7007D983A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A125AF52092F6C4007D983A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				8A3A8C70208B234C00CA3F48 /* PocketLint.xcdatamodeld */,
 				8A3A8C73208B234D00CA3F48 /* Assets.xcassets */,
 				8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */,
+				8A08888A20AAD5BB00CBEC5C /* SettingsTableViewController.swift */,
 			);
 			path = PocketLint;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				8A125AF42092E185007D983A /* ItemCollectionViewCell.swift in Sources */,
 				8A125AF22092DFD7007D983A /* LogInViewController.swift in Sources */,
 				8A3A8C72208B234C00CA3F48 /* PocketLint.xcdatamodeld in Sources */,
+				8A08888B20AAD5BB00CBEC5C /* SettingsTableViewController.swift in Sources */,
 				8A5BB61C20944B41005A0DF5 /* ViewItemTableViewController.swift in Sources */,
 				8A5BB60E20931F23005A0DF5 /* PocketCollectionViewController.swift in Sources */,
 				8A5BB61A20943BDF005A0DF5 /* LocationAnnotation.swift in Sources */,

@@ -37,6 +37,8 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.allowsSelection = false
+        
         guard let userID = Auth.auth().currentUser?.uid else {
             print("Firebase User ID is invalid.")
             return
