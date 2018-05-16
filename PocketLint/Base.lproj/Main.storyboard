@@ -133,8 +133,7 @@
                     <navigationItem key="navigationItem" title="My Pocket" largeTitleDisplayMode="always" id="P4X-QB-ccZ">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="cDr-qd-rGl">
                             <connections>
-                                <action selector="signOut:" destination="K08-HK-fBO" id="sXA-IG-HMs"/>
-                                <segue destination="EV5-6S-NIK" kind="show" id="fHB-mb-rGC"/>
+                                <action selector="settingsButton:" destination="K08-HK-fBO" id="S7H-1l-ctb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vuB-Pf-w5V">
@@ -145,6 +144,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="S2e-yK-r9R" kind="presentation" identifier="addItemSegue" modalTransitionStyle="crossDissolve" id="uaU-h7-yid"/>
+                        <segue destination="EV5-6S-NIK" kind="show" identifier="settingsSegue" id="3pq-n0-cyP"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="411-1m-kp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -560,13 +560,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic Text Detection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9w-Jh-UVS">
-                                                    <rect key="frame" x="20" y="11.333333333333336" width="193" height="31"/>
+                                                    <rect key="frame" x="20" y="11.333333333333334" width="193" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0T-8L-pCP">
-                                                    <rect key="frame" x="345" y="11.333333333333336" width="51" height="31"/>
+                                                    <rect key="frame" x="345" y="11.333333333333336" width="51" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="b4y-Y2-18b"/>
                                                     </constraints>

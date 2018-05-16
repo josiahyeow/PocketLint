@@ -20,7 +20,6 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     // Initialise list to store images and image urls
     var currentItems = [Item]()
     var itemList = [Item]()
-    var itemURLList = [String]()
     
     // Collection View variables
     private let reuseIdentifier = "itemCell"
@@ -33,6 +32,11 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults = UserDefaults.standard
+        // Set user preferences
+        defaults.set("Newest First", forKey: "sortOrder")
+        defaults.set(true, forKey: "textDetection")
+        defaults.set(true, forKey: "saveLocation")
         
         // Get Firebase userID and database reference path
         guard let getUserID = Auth.auth().currentUser?.uid else {
@@ -111,6 +115,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                             }
                         })
                     }
+                    self.sortItems()
+                    
                 }
                 else {
                     // Update title if changed
@@ -168,6 +174,9 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         
     }
     
+    @IBAction func settingsButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "settingsSegue", sender: Any?.self)
+    }
     // MARK: - Take Photo
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -239,6 +248,17 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                 })
         }
         
+    }
+    
+    // Sort Items
+    
+    func sortItems() {
+        if UserDefaults.standard.object(forKey: "sortOrder") as! String == "Newest First" {
+            itemList = itemList.sorted(by: { $0.filename > $1.filename })
+        }
+        else if UserDefaults.standard.object(forKey: "sortOrder") as! String == "Oldest First" {
+            itemList = itemList.sorted(by: { $0.filename < $1.filename })
+        }
     }
     
     // MARK: UICollectionViewDataSource
@@ -337,6 +357,13 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                 destinationVC.delegate = self
             }
         }
+        
+        // Settings Segue
+        if segue.identifier == "settingsSegue" {
+            if let destinationVC = segue.destination as? SettingsTableViewController {
+                destinationVC.delegate = self
+            }
+        }
     }
 
 
@@ -400,6 +427,15 @@ extension PocketCollectionViewController: ItemCollectionViewCellDelegate {
 extension PocketCollectionViewController: ViewItemTableViewControllerDelegate {
     func delete(cell: ItemCollectionViewCell) {
         self.deleteItem(cell: cell)
+    }
+}
+
+// Delegate for Settings which reloads the items to update sort order
+extension PocketCollectionViewController: SettingsTableViewControllerDelegate {
+    func updateSortOrder() {
+        // Set Sort Order
+        self.sortItems()
+        self.collectionView?.reloadSections([0])
     }
 }
 

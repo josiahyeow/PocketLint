@@ -9,10 +9,16 @@
 import UIKit
 import Firebase
 
+protocol SettingsTableViewControllerDelegate: class {
+    func updateSortOrder()
+}
+
 class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var sortOrderInputField: UITextField!
     @IBOutlet weak var textDetectionSwitch: UISwitch!
     @IBOutlet weak var saveLocationSwitch: UISwitch!
+    
+    weak var delegate: SettingsTableViewControllerDelegate?
     
     let defaults = UserDefaults.standard
     
@@ -60,6 +66,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
         defaults.set(sortOrderInputField.text, forKey: "sortOrder")
         defaults.set(textDetectionSwitch.isOn, forKey: "textDetection")
         defaults.set(saveLocationSwitch.isOn, forKey: "saveLocation")
+        self.delegate?.updateSortOrder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,7 +90,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         sortOrderInputField.text = sortOptions[row]
-        sortOrderInputField.resignFirstResponder()
+        //sortOrderInputField.resignFirstResponder()
     }
 
     // MARK: - Table view data source
