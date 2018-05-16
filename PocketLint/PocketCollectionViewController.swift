@@ -118,18 +118,6 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                     self.sortItems()
                     
                 }
-                else {
-                    // Update title if changed
-                    if self.itemList.first(where:{ $0.filename == item.filename })?.title != item.title {
-                        self.itemList.first(where:{ $0.filename == item.filename })?.title = item.title
-                        self.collectionView?.reloadSections([0])
-                    }
-                    // Update textContent if changed
-                    if self.itemList.first(where:{ $0.filename == item.filename })?.textContent != item.textContent {
-                        self.itemList.first(where:{ $0.filename == item.filename })?.textContent = item.textContent
-                        self.collectionView?.reloadSections([0])
-                    }
-                }
             }
             
         }) { (error) in
@@ -427,6 +415,10 @@ extension PocketCollectionViewController: ItemCollectionViewCellDelegate {
 extension PocketCollectionViewController: ViewItemTableViewControllerDelegate {
     func delete(cell: ItemCollectionViewCell) {
         self.deleteItem(cell: cell)
+    }
+    
+    func update() {
+        self.collectionView?.reloadSections([0])
     }
 }
 

@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 import Firebase
 
+protocol AddEditItemTableViewControllerDelegate: class {
+    func updateItem(title: String, textContent: String)
+}
 
 class AddEditItemTableViewController: UITableViewController, CLLocationManagerDelegate {
     @IBOutlet weak var imageView: UIImageView!
@@ -18,6 +21,8 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     @IBOutlet weak var saveLocationToggle: UISwitch!
     
     let defaults = UserDefaults.standard
+    
+    weak var delegate: AddEditItemTableViewControllerDelegate?
     
     // Firebase database and storage variables
     var databaseRef = Database.database().reference().child("users")
@@ -226,6 +231,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
         // Update item in database
         self.databaseRef.child("\(filename!)").updateChildValues(["title": title ?? "", "textContent": textContent ?? ""])
+        self.delegate?.updateItem(title: title!, textContent: textContent!)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -243,8 +249,13 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 4
+        // Only show save location toggle if adding new item
+        if newItem {
+            return 4
+        }
+        else {
+            return 3
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

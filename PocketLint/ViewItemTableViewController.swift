@@ -12,9 +12,10 @@ import Firebase
 
 protocol ViewItemTableViewControllerDelegate: class {
     func delete(cell: ItemCollectionViewCell)
+    func update()
 }
 
-class ViewItemTableViewController: UITableViewController {
+class ViewItemTableViewController: UITableViewController, AddEditItemTableViewControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -66,6 +67,15 @@ class ViewItemTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // Update item values on edit
+    func updateItem(title: String, textContent: String) {
+        item?.title = title
+        item?.textContent = textContent
+        self.viewWillAppear(true)   // Update current view to reflect the changes
+        self.delegate?.update() // Update PocketView to reflect the changes
     }
     
     // MARK: - Menu action sheet
@@ -173,6 +183,7 @@ class ViewItemTableViewController: UITableViewController {
                 // Pass the information of the book to the first View Controller connected to the Navigation Controller.
                 let itemVC = destinationVC.viewControllers.first! as! AddEditItemTableViewController
                 itemVC.item = item
+                itemVC.delegate = self
             }
         }
     }
