@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Firebase
+import Hero
 
 protocol ViewItemTableViewControllerDelegate: class {
     func delete(cell: ItemCollectionViewCell)
@@ -20,11 +21,18 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var textContentTextView: UITextView!
     @IBOutlet weak var locationMapView: MKMapView!
     
     var item: Item?
     var cell: ItemCollectionViewCell?
+    
+    // Hero animation IDs
+    var imageHeroId: String?
+    var titleHeroId: String?
+    var dateHeroId: String?
+    var menuHeroId: String?
     
     weak var delegate: ViewItemTableViewControllerDelegate?
     
@@ -32,7 +40,14 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         super.viewDidLoad()
         
         self.tableView.allowsSelection = false  // Turn off table cell highlighting
-    
+        
+        // Set animation hero IDs
+        imageView.hero.id = imageHeroId
+        titleLabel.hero.id = titleHeroId
+        dateLabel.hero.id = dateHeroId
+        menuButton.hero.id = menuHeroId
+        
+        self.navigationController?.hero.isEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +104,7 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         
         let deleteButton = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
             self.delegate?.delete(cell: self.cell!)
-            self.navigationController?.popViewController(animated: false)
+            self.dismiss(animated: true, completion: nil)
             
         })
         
@@ -103,6 +118,23 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         alertController.addAction(cancelButton)
         
         self.navigationController!.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func closeButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            hero.dismissViewController()
+        case .changed:
+            let translation = sender.translation(in: nil)
+            let progress = translation.y / 2 / view.bounds.height
+            Hero.shared.update(progress)
+        default:
+            Hero.shared.finish()
+        }
     }
     
     

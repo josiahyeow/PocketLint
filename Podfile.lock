@@ -68,6 +68,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.15)
   - GTMSessionFetcher/Full (1.1.15):
     - GTMSessionFetcher/Core (= 1.1.15)
+  - Hero (1.2.0)
   - IQKeyboardManagerSwift (6.0.2)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - Firebase/MLVision
   - Firebase/MLVisionTextModel
   - Firebase/Storage
+  - Hero (~> 1.2)
   - IQKeyboardManagerSwift
 
 SPEC REPOS:
@@ -102,6 +104,7 @@ SPEC REPOS:
     - GoogleMobileVision
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - Hero
     - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
@@ -122,11 +125,12 @@ SPEC CHECKSUMS:
   GoogleMobileVision: 8c57c6b27b0964506cb7163049e67a38e279ea6f
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  Hero: 33dadf2cd1c98af71e213dcbc2902e6e03622a4e
   IQKeyboardManagerSwift: 59d4b0e140bc546c3c76ae5bb35b3dafd10b8172
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
 
-PODFILE CHECKSUM: e9c748e0dd5ca1fc97bec5e755a0777dde8445f1
+PODFILE CHECKSUM: 15d2a6728586c87056b5d47e56b5d12e7aaf7275
 
 COCOAPODS: 1.5.0

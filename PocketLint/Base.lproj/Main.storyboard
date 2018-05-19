@@ -9,7 +9,6 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,16 +51,25 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="itemDate"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gYd-hl-11E">
                                                             <rect key="frame" x="16" y="44" width="318" height="28.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="itemTitle"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHD-2n-9xl">
                                                             <rect key="frame" x="312" y="0.0" width="30" height="39"/>
                                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                                             <state key="normal" title="..."/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="itemMenu"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="itemMenuTapped:" destination="RBh-sZ-NG3" eventType="touchUpInside" id="SpE-Lu-EsF"/>
                                                             </connections>
@@ -117,11 +125,9 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="jPF-P0-Z3l" id="czK-wK-bCI"/>
                                     <outlet property="imageView" destination="hDj-0D-yC8" id="858-Yk-LOR"/>
+                                    <outlet property="menuButton" destination="IHD-2n-9xl" id="XU0-mg-efk"/>
                                     <outlet property="titleLabel" destination="gYd-hl-11E" id="i98-iM-rzE"/>
-                                    <segue destination="nja-Qh-Plp" kind="show" identifier="viewItemSegue" id="pRL-mv-ggI">
-                                        <segue key="commit" inheritsFrom="parent" id="TZL-Pk-9t1"/>
-                                        <segue key="preview" inheritsFrom="commit" id="S91-c0-KlJ"/>
-                                    </segue>
+                                    <segue destination="hYN-QG-4EQ" kind="show" identifier="viewItemSegue" id="Uo0-f9-7O8"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -142,6 +148,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="S2e-yK-r9R" kind="presentation" identifier="addItemSegue" modalTransitionStyle="crossDissolve" id="uaU-h7-yid"/>
                         <segue destination="EV5-6S-NIK" kind="show" identifier="settingsSegue" id="3pq-n0-cyP"/>
@@ -665,7 +674,7 @@
         <!--Item-->
         <scene sceneID="wMy-UZ-tpm">
             <objects>
-                <tableViewController id="nja-Qh-Plp" customClass="ViewItemTableViewController" customModule="PocketLint" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ViewItemTableViewController" id="nja-Qh-Plp" customClass="ViewItemTableViewController" customModule="PocketLint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DLt-tu-dKJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -710,12 +719,18 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="itemDate"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQH-Sd-yI2">
                                                     <rect key="frame" x="16" y="48" width="382" height="27.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="itemTitle"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nnk-2c-Fes">
                                                     <rect key="frame" x="16" y="91.666666666666686" width="382" height="256"/>
@@ -732,6 +747,9 @@
                                                     <rect key="frame" x="376" y="0.0" width="30" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                                     <state key="normal" title="..."/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="itemMenu"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="menuTapped:" destination="nja-Qh-Plp" eventType="touchUpInside" id="Axx-uo-2pl"/>
                                                     </connections>
@@ -769,19 +787,50 @@
                             <outlet property="delegate" destination="nja-Qh-Plp" id="Anb-xF-nQR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Item" largeTitleDisplayMode="never" id="Y26-f6-HzN"/>
+                    <navigationItem key="navigationItem" title="Item" largeTitleDisplayMode="never" id="Y26-f6-HzN">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="gMu-ep-gyG">
+                            <connections>
+                                <action selector="closeButton:" destination="nja-Qh-Plp" id="dht-ec-JSz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="dateLabel" destination="cKE-SA-RiH" id="C2z-Lg-CvL"/>
                         <outlet property="imageView" destination="R4J-Ep-yQt" id="Pcz-9W-2v0"/>
                         <outlet property="locationMapView" destination="RlY-Zl-tBx" id="jBs-ZP-Mcx"/>
+                        <outlet property="menuButton" destination="qGz-03-kRz" id="uyL-ag-YPz"/>
                         <outlet property="textContentTextView" destination="nnk-2c-Fes" id="xAC-sU-a5T"/>
                         <outlet property="titleLabel" destination="QQH-Sd-yI2" id="en7-5M-kB5"/>
                         <segue destination="S2e-yK-r9R" kind="presentation" identifier="editItemSegue" modalTransitionStyle="crossDissolve" id="SR2-yU-D4G"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgH-Ie-kPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="8Tj-l9-CTd">
+                    <connections>
+                        <action selector="handlePan:" destination="nja-Qh-Plp" id="Iys-Qu-rNM"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="962" y="-635"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IQS-9K-f1e">
+            <objects>
+                <navigationController id="hYN-QG-4EQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q5l-QY-iWK">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nja-Qh-Plp" kind="relationship" relationship="rootViewController" id="4ag-Jo-09k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mKw-MN-dgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="-1408"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SXc-E5-R75">
@@ -1108,8 +1157,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uaU-h7-yid"/>
-        <segue reference="pRL-mv-ggI"/>
+        <segue reference="SR2-yU-D4G"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.90780466790000003" green="0.22138610480000001" blue="0.29083526129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

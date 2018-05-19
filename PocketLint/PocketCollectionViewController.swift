@@ -268,13 +268,13 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         // Configure the cell
         
         // Add cell styling
-        cell.contentView.layer.cornerRadius = 20.0
+        cell.contentView.layer.cornerRadius = 16
         cell.contentView.layer.masksToBounds = true;
         
-        cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width:0,height: 0)
-        cell.layer.shadowRadius = 14.0
-        cell.layer.shadowOpacity = 0.6
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width:0,height: 8)
+        cell.layer.shadowRadius = 12
+        cell.layer.shadowOpacity = 0.15
         cell.layer.masksToBounds = false;
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
  
@@ -328,21 +328,40 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Add Edit Item Segue
-        if let destinationVC = segue.destination as? UINavigationController {
-            // Pass the information of the book to the next screen.
-            let photoVC = destinationVC.viewControllers.first! as! AddEditItemTableViewController
-            photoVC.photo = photo
+        if segue.identifier == "addItemSegue" {
+            if let destinationVC = segue.destination as? UINavigationController {
+                // Pass the information of the book to the next screen.
+                let photoVC = destinationVC.viewControllers.first! as! AddEditItemTableViewController
+                photoVC.photo = photo
+            }
         }
         
         // View Item Segue
         if segue.identifier == "viewItemSegue" {
-            if let destinationVC = segue.destination as? ViewItemTableViewController {
+            if let destinationVC = segue.destination as? UINavigationController {
+                destinationVC.hero.isEnabled = true
+                let viewItemVC = destinationVC.viewControllers.first! as! ViewItemTableViewController
                 let cell = sender as! ItemCollectionViewCell
                 let indexPath = self.collectionView!.indexPath(for: cell)
                 print(indexPath!)
-                destinationVC.item = itemList[indexPath![1]]
-                destinationVC.cell = cell
-                destinationVC.delegate = self
+                viewItemVC.item = itemList[indexPath![1]]
+                viewItemVC.cell = cell
+                viewItemVC.delegate = self
+                
+                // Set Hero animation IDs for cell and view item
+                let imageHeroId = "itemImage\(String(indexPath![1]))"
+                let titleHeroId = "itemTitle\(String(indexPath![1]))"
+                let dateHeroId = "itemDate\(String(indexPath![1]))"
+                let menuHeroId = "itemMenu\(String(indexPath![1]))"
+                cell.imageView.hero.id = imageHeroId
+                cell.titleLabel.hero.id = titleHeroId
+                cell.dateLabel.hero.id = dateHeroId
+                cell.menuButton.hero.id = menuHeroId
+                
+                viewItemVC.imageHeroId = imageHeroId
+                viewItemVC.titleHeroId = titleHeroId
+                viewItemVC.dateHeroId = dateHeroId
+                viewItemVC.menuHeroId = menuHeroId
             }
         }
         

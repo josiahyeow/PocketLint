@@ -12,6 +12,7 @@ target 'PocketLint' do
   pod 'Firebase/Storage'
   pod 'Firebase/MLVision'
   pod 'IQKeyboardManagerSwift'
+  pod 'Hero', '~> 1.2'
   
   # Pod for Google Vision API
   pod 'Firebase/MLVisionTextModel'
