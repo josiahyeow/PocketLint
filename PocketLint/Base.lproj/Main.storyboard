@@ -168,11 +168,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <progressView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="g6x-vE-kOw">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </progressView>
                         <sections>
                             <tableViewSection id="FR3-qd-kne">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="400" id="uin-jo-T9b">
-                                        <rect key="frame" x="0.0" y="35" width="414" height="400"/>
+                                        <rect key="frame" x="0.0" y="2" width="414" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uin-jo-T9b" id="OHR-W4-a1A">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="399.66666666666669"/>
@@ -199,7 +203,7 @@
                             <tableViewSection headerTitle="What is this item?" id="mb9-es-Tl4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="45" id="77B-e3-zsz">
-                                        <rect key="frame" x="0.0" y="491" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="458" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="77B-e3-zsz" id="ixO-7G-5II">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44.666666666666664"/>
@@ -214,11 +218,17 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="AgF-Me-I8L">
+                                                    <rect key="frame" x="374" y="11" width="20" height="23"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="6ev-IG-Zse" secondAttribute="trailing" constant="16" id="JAc-Kh-eId"/>
+                                                <constraint firstItem="AgF-Me-I8L" firstAttribute="top" secondItem="ixO-7G-5II" secondAttribute="topMargin" id="LGZ-1K-RXI"/>
                                                 <constraint firstItem="6ev-IG-Zse" firstAttribute="centerY" secondItem="ixO-7G-5II" secondAttribute="centerY" id="UTK-87-RQ3"/>
                                                 <constraint firstItem="6ev-IG-Zse" firstAttribute="centerX" secondItem="ixO-7G-5II" secondAttribute="centerX" id="ce1-VY-Roc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AgF-Me-I8L" secondAttribute="trailing" id="dBR-Vh-hrU"/>
+                                                <constraint firstItem="AgF-Me-I8L" firstAttribute="bottom" secondItem="ixO-7G-5II" secondAttribute="bottomMargin" id="lKs-yo-tBl"/>
                                                 <constraint firstItem="6ev-IG-Zse" firstAttribute="leading" secondItem="ixO-7G-5II" secondAttribute="leading" constant="16" id="rqd-C1-rgW"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -228,7 +238,7 @@
                             <tableViewSection headerTitle="Text Content" id="VcP-fV-jNo">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="300" id="iuy-mg-JFn">
-                                        <rect key="frame" x="0.0" y="592" width="414" height="300"/>
+                                        <rect key="frame" x="0.0" y="559" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iuy-mg-JFn" id="QAx-nj-CUZ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="299.66666666666669"/>
@@ -240,12 +250,17 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Zqg-WA-SeR">
+                                                    <rect key="frame" x="374" y="11" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Zqg-WA-SeR" firstAttribute="top" secondItem="QAx-nj-CUZ" secondAttribute="topMargin" id="0rR-rG-QZJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="vgP-cp-SkZ" secondAttribute="trailing" constant="16" id="Eys-wz-mbZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="vgP-cp-SkZ" secondAttribute="bottom" constant="16" id="LRe-gJ-DhM"/>
                                                 <constraint firstItem="vgP-cp-SkZ" firstAttribute="centerX" secondItem="QAx-nj-CUZ" secondAttribute="centerX" id="Sh0-Xy-a1B"/>
                                                 <constraint firstItem="vgP-cp-SkZ" firstAttribute="leading" secondItem="QAx-nj-CUZ" secondAttribute="leading" constant="16" id="WLc-yH-ilg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zqg-WA-SeR" secondAttribute="trailing" id="WRR-OA-GTs"/>
                                                 <constraint firstItem="vgP-cp-SkZ" firstAttribute="centerY" secondItem="QAx-nj-CUZ" secondAttribute="centerY" id="c1N-vD-g3G"/>
                                                 <constraint firstItem="vgP-cp-SkZ" firstAttribute="top" secondItem="QAx-nj-CUZ" secondAttribute="top" constant="16" id="sTr-y5-CtT"/>
                                             </constraints>
@@ -256,7 +271,7 @@
                             <tableViewSection headerTitle="Location" id="eiX-gE-J8j">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="qAn-oF-wAA">
-                                        <rect key="frame" x="0.0" y="948" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="915" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qAn-oF-wAA" id="S7q-kK-nq6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
@@ -318,10 +333,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="detectLabelActivityIndicator" destination="AgF-Me-I8L" id="oLx-U4-dHc"/>
+                        <outlet property="detectTextActivityIndicator" destination="Zqg-WA-SeR" id="93E-JH-ASf"/>
                         <outlet property="imageView" destination="oO8-Ob-m4f" id="m94-VE-Ja4"/>
                         <outlet property="saveLocationToggle" destination="FS1-qO-pUJ" id="ofu-Hd-NbT"/>
                         <outlet property="textContentTextField" destination="vgP-cp-SkZ" id="6fA-G2-hJq"/>
                         <outlet property="titleTextField" destination="6ev-IG-Zse" id="G2j-md-25W"/>
+                        <outlet property="uploadProgressView" destination="g6x-vE-kOw" id="wdk-eN-Qwj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okZ-kN-c3d" userLabel="First Responder" sceneMemberID="firstResponder"/>

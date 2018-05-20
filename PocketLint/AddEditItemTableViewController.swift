@@ -19,6 +19,9 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textContentTextField: UITextView!
     @IBOutlet weak var saveLocationToggle: UISwitch!
+    @IBOutlet weak var uploadProgressView: UIProgressView!
+    @IBOutlet weak var detectLabelActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var detectTextActivityIndicator: UIActivityIndicatorView!
     
     let defaults = UserDefaults.standard
     
@@ -81,7 +84,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         if defaults.object(forKey: "textDetection") as! Bool {
             // Scan photo
             if (newItem) {
-                self.detectItem()
+                self.detectLabel()
                 self.detectText()
             }
         }
@@ -93,6 +96,8 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         else {
             saveLocationToggle.isOn = false
         }
+        
+        self.uploadProgressView.setProgress(0, animated: false)
 
     }
 
@@ -106,43 +111,53 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         currentLocation = loc.coordinate
     }
     
-    @IBAction func detectButton(_ sender: Any) {
-        self.detectItem()
-        self.detectText()
+    // MARK: MLKit Text Detection Functions
+    
+    func detectLabel() {
+        let labelDetector = vision.cloudLabelDetector()  // Check console for errors.
+        let image = VisionImage(image: imageView.image!)
+        
+        // Start activity indicator
+        self.detectLabelActivityIndicator.startAnimating()
+        
+        labelDetector.detect(in: image) { (labels: [VisionCloudLabel]?, error: Error?) in
+            guard error == nil, let labels = labels, !labels.isEmpty else {
+                let errorString = error?.localizedDescription
+                print("Item detection failed with error: \(String(describing: errorString))")
+                self.detectLabelActivityIndicator.stopAnimating()
+                return
+            }
+            
+            for label in labels {
+                self.titleTextField.text = label.label
+                self.detectLabelActivityIndicator.stopAnimating()
+            }
+        }
     }
     
     func detectText() {
         let textDetector = vision.cloudTextDetector()  // Check console for errors.
         let image = VisionImage(image: imageView.image!)
         
+        // Start activity indicator
+        self.detectTextActivityIndicator.startAnimating()
+        
         textDetector.detect(in: image) { (cloudText, error) in
             guard error == nil, let cloudText = cloudText else {
                 let errorString = error?.localizedDescription
                 print("Text detection failed with error: \(String(describing: errorString))")
+                self.detectTextActivityIndicator.stopAnimating()
                 return
             }
             
             // Recognized and extracted text
             self.textContentTextField.text = cloudText.text
+            self.detectTextActivityIndicator.stopAnimating()
             
         }
     }
     
-    func detectItem() {
-        let labelDetector = vision.cloudLabelDetector()  // Check console for errors.
-        let image = VisionImage(image: imageView.image!)
-        
-        labelDetector.detect(in: image) { (labels: [VisionCloudLabel]?, error: Error?) in
-            guard error == nil, let labels = labels, !labels.isEmpty else {
-                let errorString = error?.localizedDescription
-                print("Item detection failed with error: \(String(describing: errorString))")
-                return
-            }
-            
-            for label in labels {
-                self.titleTextField.text = label.label
-            }
-        }    }
+    // MARK: Actions
     
     @IBAction func cancelItem(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -165,6 +180,8 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         let date = formatter.string(from: (date))
         return date
     }
+    
+    // MARK: Firebase Activities
     
     private func addItemToFirebase() {
         let filename = UInt(Date().timeIntervalSince1970)
@@ -197,7 +214,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         // Set upload path
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
-        imageRef.putData(image, metadata: metaData) {(metaData,error) in
+        let uploadTask = imageRef.putData(image, metadata: metaData) {(metaData,error) in
             if let error = error {
                 print(error.localizedDescription)
                 self.displayMessage("Error", message: "Could not upload item.")
@@ -221,6 +238,13 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
                     }
                 })
             }
+        }
+        
+        // Update upload progress view
+        uploadTask.observe(.progress) { snapshot in
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) /  Double(snapshot.progress!.totalUnitCount)
+            print(percentComplete)
+            self.uploadProgressView.setProgress(Float(percentComplete), animated: true)
         }
     }
     
