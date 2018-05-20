@@ -18,13 +18,13 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
     @IBOutlet weak var textDetectionSwitch: UISwitch!
     @IBOutlet weak var saveLocationSwitch: UISwitch!
     
+    @IBOutlet weak var itemSizeSegmentedControl: UISegmentedControl!
+    
     weak var delegate: SettingsTableViewControllerDelegate?
     
     let defaults = UserDefaults.standard
     
     let sortOptions = ["Newest First", "Oldest First"]
-    
-    //let numberOfItemsPerRow = [1, 2, 3]
     
     var sortOptionsPickerView = UIPickerView()
     
@@ -60,12 +60,17 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
         else {
             saveLocationSwitch.isOn = false
         }
+        
+        itemSizeSegmentedControl.selectedSegmentIndex = defaults.object(forKey: "itemSize") as! Int
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         defaults.set(sortOrderInputField.text, forKey: "sortOrder")
         defaults.set(textDetectionSwitch.isOn, forKey: "textDetection")
         defaults.set(saveLocationSwitch.isOn, forKey: "saveLocation")
+        print(itemSizeSegmentedControl.selectedSegmentIndex)
+        defaults.set(itemSizeSegmentedControl.selectedSegmentIndex, forKey: "itemSize")
+        
         self.delegate?.reloadSections()
     }
 
@@ -102,8 +107,8 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section == 1 {
-            return 1
+        if section == 0 {
+            return 2
         }
         else {
             return 1

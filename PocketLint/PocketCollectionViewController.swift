@@ -24,7 +24,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     // Collection View variables
     private let reuseIdentifier = "itemCell"
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-    private let itemsPerRow: CGFloat = 1
+    private var itemsPerRow: CGFloat =  1
     
     // Photo capture variables
     private var photo: UIImage?
@@ -37,6 +37,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         defaults.set("Newest First", forKey: "sortOrder")
         defaults.set(true, forKey: "textDetection")
         defaults.set(true, forKey: "saveLocation")
+        defaults.set(0, forKey: "itemSize")
         
         // Get Firebase userID and database reference path
         guard let getUserID = Auth.auth().currentUser?.uid else {
@@ -49,6 +50,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
         self.fetchItemsFromFirebase()
         
     }
@@ -294,6 +297,17 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         // Connect cell to delegate which allows the menu button to function
         cell.delegate = self
         
+        if itemsPerRow > 1 {
+            cell.dateLabel.isHidden = true
+            cell.menuButton.isHidden = true
+            cell.titleLabel.isHidden = true
+        }
+        else {
+            cell.dateLabel.isHidden = false
+            cell.menuButton.isHidden = false
+            cell.titleLabel.isHidden = false
+        }
+        
         return cell
     }
     
@@ -306,7 +320,12 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
-        return CGSize(width: widthPerItem, height: widthPerItem + widthPerItem/3)
+        if itemsPerRow > 1 {
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        }
+        else {
+            return CGSize(width: widthPerItem, height: widthPerItem + widthPerItem/3.5)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
@@ -445,7 +464,12 @@ extension PocketCollectionViewController: ViewItemTableViewControllerDelegate {
 // Delegate for Settings which reloads the items to update sort order
 extension PocketCollectionViewController: SettingsTableViewControllerDelegate {
     func reloadSections() {
-        // Set Sort Order
+        // Set itemSize
+        let defaults = UserDefaults.standard
+        var itemSize = defaults.object(forKey: "itemSize") as! CGFloat
+        itemSize += 1
+        itemsPerRow = itemSize
+        // Reload sections to update sort order
         self.collectionView?.reloadSections([0])
     }
 }

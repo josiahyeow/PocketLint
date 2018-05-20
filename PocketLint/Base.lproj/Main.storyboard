@@ -626,12 +626,43 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yuB-K1-yht">
+                                        <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yuB-K1-yht" id="hzd-Sr-ayh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz9-dO-QvC">
+                                                    <rect key="frame" x="20" y="11" width="71" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fcH-eV-bY7">
+                                                    <rect key="frame" x="255" y="11" width="139" height="23"/>
+                                                    <segments>
+                                                        <segment title="Full"/>
+                                                        <segment title="Compact"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fcH-eV-bY7" firstAttribute="top" secondItem="hzd-Sr-ayh" secondAttribute="topMargin" id="9Yv-ee-9wR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fcH-eV-bY7" secondAttribute="trailing" id="FBz-jt-QDG"/>
+                                                <constraint firstItem="bz9-dO-QvC" firstAttribute="leading" secondItem="hzd-Sr-ayh" secondAttribute="leadingMargin" id="cwF-cy-7zX"/>
+                                                <constraint firstItem="bz9-dO-QvC" firstAttribute="top" secondItem="hzd-Sr-ayh" secondAttribute="topMargin" id="hqe-SF-FtV"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bz9-dO-QvC" secondAttribute="bottom" id="nh3-Cq-KxY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fcH-eV-bY7" secondAttribute="bottom" id="wia-Qs-hyH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Extra Features" footerTitle="Pocketlint will auto detect text content found in images" id="nQO-1T-YDD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UFu-A9-gsb">
-                                        <rect key="frame" x="0.0" y="162.66666666666669" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="206.66666666666669" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UFu-A9-gsb" id="cAW-LK-fTn">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -665,7 +696,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                             <tableViewSection footerTitle="Automatically save location of where items were captured." id="jqZ-2S-uNb" userLabel="Location">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="rIc-Av-ek3">
-                                        <rect key="frame" x="0.0" y="254.66666666666669" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="298.66666666666669" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rIc-Av-ek3" id="KKc-LQ-g8t">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -699,7 +730,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                             <tableViewSection footerTitle="" id="Hor-Zz-yJE" userLabel="About">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="Nfw-Iw-mLd">
-                                        <rect key="frame" x="0.0" y="346.66666666666669" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="390.66666666666669" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nfw-Iw-mLd" id="N9W-76-Dxx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -728,7 +759,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                             <tableViewSection headerTitle="Account" footerTitle="" id="aPl-3P-hLg" userLabel="Log out">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="eEZ-cy-Z3v">
-                                        <rect key="frame" x="0.0" y="454" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="498" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eEZ-cy-Z3v" id="gma-t3-3mV">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -760,6 +791,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="itemSizeSegmentedControl" destination="fcH-eV-bY7" id="yVw-Cp-FK1"/>
                         <outlet property="saveLocationSwitch" destination="saz-Lw-p7X" id="ctX-2Y-BIE"/>
                         <outlet property="sortOrderInputField" destination="5hC-hq-H9g" id="VVp-Wm-cKk"/>
                         <outlet property="textDetectionSwitch" destination="q0T-8L-pCP" id="hap-tv-q8A"/>
@@ -1256,7 +1288,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SR2-yU-D4G"/>
+        <segue reference="uaU-h7-yid"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.90780466790000003" green="0.22138610480000001" blue="0.29083526129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
