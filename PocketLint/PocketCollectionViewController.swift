@@ -115,8 +115,6 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                             }
                         })
                     }
-                    self.sortItems()
-                    
                 }
             }
             
@@ -264,6 +262,9 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
+        
+        // Sort items before rendering new cells
+        self.sortItems()
         
         // Configure the cell
         
@@ -443,9 +444,8 @@ extension PocketCollectionViewController: ViewItemTableViewControllerDelegate {
 
 // Delegate for Settings which reloads the items to update sort order
 extension PocketCollectionViewController: SettingsTableViewControllerDelegate {
-    func updateSortOrder() {
+    func reloadSections() {
         // Set Sort Order
-        self.sortItems()
         self.collectionView?.reloadSections([0])
     }
 }

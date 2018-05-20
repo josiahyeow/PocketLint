@@ -27,6 +27,7 @@
 		8A5BB61C20944B41005A0DF5 /* ViewItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */; };
 		8A5BB61E20969365005A0DF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */; };
 		8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */; };
+		8A7FA31E20B125910058ACA8 /* References.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7FA31D20B125910058ACA8 /* References.rtf */; };
 		8AFE01A420A3236B0069BD51 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFE01A320A3236B0069BD51 /* FirebaseCore.framework */; };
 		8AFE01A620A52D900069BD51 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE01A520A52D900069BD51 /* Item.swift */; };
 		F5A2E401B52F40864D17C45E /* Pods_PocketLintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E97A9FC64574AAA7D4B0EF /* Pods_PocketLintUITests.framework */; };
@@ -79,6 +80,7 @@
 		8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemTableViewController.swift; sourceTree = "<group>"; };
 		8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketViewController.swift; sourceTree = "<group>"; };
+		8A7FA31D20B125910058ACA8 /* References.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = References.rtf; sourceTree = "<group>"; };
 		8AFE019B20A320960069BD51 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE019D20A320FA0069BD51 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE019F20A320FA0069BD51 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 				8A3A8C73208B234D00CA3F48 /* Assets.xcassets */,
 				8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */,
 				8A08888A20AAD5BB00CBEC5C /* SettingsTableViewController.swift */,
+				8A7FA31D20B125910058ACA8 /* References.rtf */,
 			);
 			path = PocketLint;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7FA31E20B125910058ACA8 /* References.rtf in Resources */,
 				8A3A8C77208B234D00CA3F48 /* LaunchScreen.storyboard in Resources */,
 				8A5BB61E20969365005A0DF5 /* GoogleService-Info.plist in Resources */,
 				8A3A8C74208B234D00CA3F48 /* Assets.xcassets in Resources */,
@@ -650,7 +654,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25AZ9VLSYQ;
 				INFOPLIST_FILE = PocketLint/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -666,7 +673,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25AZ9VLSYQ;
 				INFOPLIST_FILE = PocketLint/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -682,7 +692,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PocketLintTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -699,7 +713,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PocketLintTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -715,7 +733,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PocketLintUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -731,7 +753,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PocketLintUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jjyeo8.PocketLintUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

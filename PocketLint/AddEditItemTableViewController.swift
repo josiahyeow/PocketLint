@@ -31,7 +31,6 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     // Text recognition variables
     lazy var vision = Vision.vision()
     
-    
     var photo: UIImage?
     var item: Item?
     var newItem = true
@@ -64,12 +63,13 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
             imageView.image = item?.image
             titleTextField.text = item?.title
             textContentTextField.text = item?.textContent
+            
             if (item?.longitude == 0 && item?.latitude == 0) {
                 saveLocationToggle.isOn = false
             }
             newItem = false
         }
-        
+        textContentTextField.delegate = self
         // Set up location
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
@@ -317,4 +317,19 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     }
     */
 
+}
+
+extension AddEditItemTableViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: textView.frame.size.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+        
+        textView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+        }
+
+    }
 }

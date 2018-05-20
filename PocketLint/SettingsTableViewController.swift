@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol SettingsTableViewControllerDelegate: class {
-    func updateSortOrder()
+    func reloadSections()
 }
 
 class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -35,7 +35,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
         navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "Settings"
         
-        self.tableView.allowsSelection = false
+        //self.tableView.allowsSelection = false
         
         sortOptionsPickerView.delegate = self
         sortOptionsPickerView.dataSource = self
@@ -66,7 +66,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
         defaults.set(sortOrderInputField.text, forKey: "sortOrder")
         defaults.set(textDetectionSwitch.isOn, forKey: "textDetection")
         defaults.set(saveLocationSwitch.isOn, forKey: "saveLocation")
-        self.delegate?.updateSortOrder()
+        self.delegate?.reloadSections()
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,7 +97,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

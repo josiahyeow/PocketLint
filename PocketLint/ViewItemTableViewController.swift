@@ -48,6 +48,9 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         menuButton.hero.id = menuHeroId
         
         self.navigationController?.hero.isEnabled = true
+        
+        self.tableView.scrollsToTop = true
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +59,18 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         imageView.image = item?.image
         
         // Add Text
-        self.title = item?.title
+        self.title = ""
         titleLabel.text = item?.title
         textContentTextView.text = item?.textContent
+        
+        // Update text view height
+        let size = CGSize(width: textContentTextView.frame.size.width, height: .infinity)
+        let estimatedSize = textContentTextView.sizeThatFits(size)
+        textContentTextView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+        }
         
         // Set date label
         let formatter = DateFormatter()
@@ -77,6 +89,10 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
             locationMapView.addAnnotation(annotation)
             locationMapView.showAnnotations([annotation], animated: true)
         }
+        
+        // Resize tableview cell to fit content
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,6 +150,21 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
             Hero.shared.update(progress)
         default:
             Hero.shared.finish()
+        }
+    }
+    
+    // Dissmiss view when using swipe down gesture
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y < -150) {
+            self.title = "Close"
+            if (scrollView.contentOffset.y < -200) {
+                //self.dismiss(animated: true, completion: nil)
+                hero.dismissViewController()
+            }
+        }
+        else {
+            self.title = ""
         }
     }
     
