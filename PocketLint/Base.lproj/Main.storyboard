@@ -9,6 +9,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -127,7 +128,10 @@
                                     <outlet property="imageView" destination="hDj-0D-yC8" id="858-Yk-LOR"/>
                                     <outlet property="menuButton" destination="IHD-2n-9xl" id="XU0-mg-efk"/>
                                     <outlet property="titleLabel" destination="gYd-hl-11E" id="i98-iM-rzE"/>
-                                    <segue destination="hYN-QG-4EQ" kind="show" identifier="viewItemSegue" id="Uo0-f9-7O8"/>
+                                    <segue destination="hYN-QG-4EQ" kind="show" identifier="viewItemSegue" id="Uo0-f9-7O8">
+                                        <segue key="commit" inheritsFrom="parent" id="QzP-F1-Y0M"/>
+                                        <segue key="preview" inheritsFrom="commit" id="zTq-Zm-3yG"/>
+                                    </segue>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -824,7 +828,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
             <objects>
                 <tableViewController storyboardIdentifier="ViewItemTableViewController" id="nja-Qh-Plp" customClass="ViewItemTableViewController" customModule="PocketLint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DLt-tu-dKJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -855,11 +859,11 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2ST-gv-vUc">
-                                        <rect key="frame" x="0.0" y="400" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="540" id="2ST-gv-vUc">
+                                        <rect key="frame" x="0.0" y="400" width="414" height="540"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ST-gv-vUc" id="UvR-Wp-lGb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="539.66666666666663"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKE-SA-RiH">
@@ -871,7 +875,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="itemDate"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQH-Sd-yI2">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Business Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQH-Sd-yI2">
                                                     <rect key="frame" x="16" y="48" width="382" height="28"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <nil key="textColor"/>
@@ -881,11 +885,8 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nnk-2c-Fes">
-                                                    <rect key="frame" x="16" y="92" width="382" height="200"/>
+                                                    <rect key="frame" x="16" y="92" width="382" height="223"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="200" id="CdG-xO-Q2Y"/>
-                                                    </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. bob@email.com test https://google.com test +61 420 597 537 sdfsadfsdfasdfLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. bob@email.com test https://google.com test +61 420 597 537 sdfsadfsdfasdf</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -903,7 +904,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                                                     </connections>
                                                 </button>
                                                 <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RlY-Zl-tBx">
-                                                    <rect key="frame" x="52" y="324" width="310" height="150"/>
+                                                    <rect key="frame" x="52" y="347" width="310" height="150"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="D6s-Fg-Aes"/>
                                                     </constraints>
@@ -911,6 +912,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="qGz-03-kRz" secondAttribute="trailing" constant="8" id="EJQ-Rq-Rft"/>
+                                                <constraint firstItem="qGz-03-kRz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UvR-Wp-lGb" secondAttribute="leading" constant="20" symbolic="YES" id="KhQ-h2-mfy"/>
                                                 <constraint firstItem="qGz-03-kRz" firstAttribute="top" secondItem="UvR-Wp-lGb" secondAttribute="top" id="L31-3v-pfn"/>
                                                 <constraint firstItem="cKE-SA-RiH" firstAttribute="top" secondItem="UvR-Wp-lGb" secondAttribute="top" constant="16" id="LCX-Og-Vl2"/>
                                                 <constraint firstAttribute="trailing" secondItem="cKE-SA-RiH" secondAttribute="trailing" constant="16" id="MAN-md-ncp"/>
@@ -943,6 +945,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
                     </userDefinedRuntimeAttributes>
@@ -963,7 +966,7 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1961" y="-1154"/>
+            <point key="canvasLocation" x="1960.8695652173915" y="-1154.3478260869565"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IQS-9K-f1e">
@@ -1306,7 +1309,8 @@ https://www.youtube.com/watch?v=FUs9gpk04FA</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uaU-h7-yid"/>
+        <segue reference="SR2-yU-D4G"/>
+        <segue reference="Uo0-f9-7O8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.90780466790000003" green="0.22138610480000001" blue="0.29083526129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

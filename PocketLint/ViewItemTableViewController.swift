@@ -91,7 +91,7 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         }
         
         // Resize tableview cell to fit content
-        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
 
