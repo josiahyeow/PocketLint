@@ -16,6 +16,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     var userID: String?
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage()
+    var connected = true
     
     // Initialise list to store images and image urls
     var currentItems = [Item]()
@@ -32,6 +33,9 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hides navigation bar outline
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
         let defaults = UserDefaults.standard
         // Set user preferences
         defaults.set("Newest First", forKey: "sortOrder")
@@ -46,11 +50,20 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         }
         userID = getUserID
         databaseRef = Database.database().reference().child("users").child("\(userID!)")
+        
+        // Get connection status
+        let connectedRef = Database.database().reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+            if snapshot.value as? Bool ?? false {
+                self.connected = true
+            } else {
+                self.connected = false
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         
         self.fetchItemsFromFirebase()
         
@@ -63,6 +76,26 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func updateTitle() {
+        self.navigationItem.title = "\(self.itemList.count) items"
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func settingsButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "settingsSegue", sender: Any?.self)
+    }
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        // Take photo if connected to Firebase
+        if connected {
+            takePhoto()
+        }
+        else {
+            displayErrorMessage("Unable to add item when offline.")
+        }
     }
     
     // MARK: - Fetch Data
@@ -79,7 +112,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     private func fetchItemsFromFirebase() {
         // Load images from firebase
         
-        databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        databaseRef.observe(.value, with: { (snapshot) in
             // Get user value
             guard let value = snapshot.value as? NSDictionary else {
                 return
@@ -102,7 +135,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                     if(self.hasLocalImage(item: item)) {
                         self.loadLocalImage(item: item)
                         self.itemList.append(item)
-                        self.collectionView?.insertItems(at:[IndexPath(row: 0, section: 0)])
+                        self.collectionView?.insertItems(at:[IndexPath(row: self.itemList.count - 1, section: 0)])
                         self.collectionView?.reloadSections([0])
                     }
                     else {
@@ -113,13 +146,14 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                             } else {
                                 self.saveLocalImage(item: item, imageData: data!)
                                 self.itemList.append(item)
-                                self.collectionView?.insertItems(at: [IndexPath(row: 0, section: 0)])
+                                self.collectionView?.insertItems(at: [IndexPath(row: self.itemList.count - 1 , section: 0)])
                                 self.collectionView?.reloadSections([0])
                             }
                         })
                     }
                 }
             }
+            self.updateTitle()
             
         }) { (error) in
             print(error.localizedDescription)
@@ -127,6 +161,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     }
     
     // MARK: - Cache Items
+    
     func hasLocalImage(item:Item) -> Bool {
         var localFileExists:Bool = false
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) [0] as String
@@ -163,12 +198,10 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         
     }
     
-    @IBAction func settingsButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "settingsSegue", sender: Any?.self)
-    }
-    // MARK: - Take Photo
+    // MARK: Take Photo
     
-    @IBAction func takePhoto(_ sender: Any) {
+    // Take photo
+    func takePhoto() {
         let controller = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             controller.sourceType = UIImagePickerControllerSourceType.camera
@@ -196,25 +229,6 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func signOut(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch {}
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated:true, completion: nil)
-    }
-    
-    
-    // Error Message Template
-    
-    func displayErrorMessage(_ errorMessage: String) {
-        let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
     // MARK: Data Management
     
     // Deletes and item
@@ -230,6 +244,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                 } else {
                     // Delete item from itemList
                     self.itemList.remove(at: indexPath.item)
+                    self.updateTitle()
                     
                     // Delete item from collectionView
                     self.collectionView?.deleteItems(at: [indexPath])
@@ -248,6 +263,16 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         else if UserDefaults.standard.object(forKey: "sortOrder") as! String == "Oldest First" {
             itemList = itemList.sorted(by: { $0.filename < $1.filename })
         }
+    }
+    
+    // Error Message Template
+    
+    func displayErrorMessage(_ errorMessage: String) {
+        let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: UICollectionViewDataSource
@@ -317,7 +342,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:
         IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
+        let availableWidth = view.frame.width - paddingSpace * 1.2
         let widthPerItem = availableWidth / itemsPerRow
         
         if itemsPerRow > 1 {
@@ -337,11 +362,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
+        return sectionInsets.left * 1.2
     }
-
-
-
 
     // MARK: - Navigation
 
@@ -389,6 +411,11 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         if segue.identifier == "settingsSegue" {
             if let destinationVC = segue.destination as? SettingsTableViewController {
                 destinationVC.delegate = self
+                
+                // Set back button to say back
+                let backItem = UIBarButtonItem()
+                backItem.title = "Back"
+                navigationItem.backBarButtonItem = backItem
             }
         }
     }

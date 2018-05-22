@@ -28,14 +28,11 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
     
     var sortOptionsPickerView = UIPickerView()
     
-    //var numberOfRowsPickerView = UIPickerView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "Settings"
-        
-        //self.tableView.allowsSelection = false
         
         sortOptionsPickerView.delegate = self
         sortOptionsPickerView.dataSource = self

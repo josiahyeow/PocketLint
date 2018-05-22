@@ -19,9 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Enables the use of Firebase
         FirebaseApp.configure()
-        //Database.database().isPersistenceEnabled = true
+        
+        // Enables Firebase data persistence
+        Database.database().isPersistenceEnabled = true
+        
+        // Enable IQKeyboard manager Cocoapod (Adds keyboard navigation and done button)
         IQKeyboardManager.shared.enable = true
+        
+        // Remove navigation bar shadow
+        UINavigationBar.appearance().shadowImage = UIImage()
+
         return true
     }
 
