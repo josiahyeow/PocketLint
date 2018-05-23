@@ -274,10 +274,40 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="khO-cr-EYc">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="Rd6-Us-yLS">
+                                        <rect key="frame" x="0.0" y="895" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rd6-Us-yLS" id="Bn1-Pe-Tb2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMf-iC-AHQ">
+                                                    <rect key="frame" x="8" y="8" width="398" height="43.666666666666664"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Redetect Text"/>
+                                                    <connections>
+                                                        <action selector="redetectText:" destination="YWj-CR-lPA" eventType="touchUpInside" id="vXc-ih-4GN"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gMf-iC-AHQ" firstAttribute="centerY" secondItem="Bn1-Pe-Tb2" secondAttribute="centerY" id="4BL-sT-afJ"/>
+                                                <constraint firstItem="gMf-iC-AHQ" firstAttribute="leading" secondItem="Bn1-Pe-Tb2" secondAttribute="leadingMargin" id="AzR-hM-7OD"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gMf-iC-AHQ" secondAttribute="bottom" id="BmS-3y-jJW"/>
+                                                <constraint firstItem="gMf-iC-AHQ" firstAttribute="centerX" secondItem="Bn1-Pe-Tb2" secondAttribute="centerX" id="Cwp-wA-RiN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gMf-iC-AHQ" secondAttribute="trailing" id="VwV-bu-y3q"/>
+                                                <constraint firstItem="gMf-iC-AHQ" firstAttribute="top" secondItem="Bn1-Pe-Tb2" secondAttribute="topMargin" id="ecq-Hc-6Xa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Location" id="eiX-gE-J8j">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="qAn-oF-wAA">
-                                        <rect key="frame" x="0.0" y="915" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="1011" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qAn-oF-wAA" id="S7q-kK-nq6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>

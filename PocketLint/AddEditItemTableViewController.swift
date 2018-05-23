@@ -159,6 +159,11 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     
     // MARK: Actions
     
+    @IBAction func redetectText(_ sender: Any) {
+        detectLabel()
+        detectText()
+    }
+    
     @IBAction func cancelItem(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -276,10 +281,10 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Only show save location toggle if adding new item
         if newItem {
-            return 4
+            return 5
         }
         else {
-            return 3
+            return 4
         }
     }
 

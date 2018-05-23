@@ -112,22 +112,16 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
     // MARK: - Image zoom
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
-        if sender.state == .began || sender.state == .changed {
-            let currentScale = self.imageView.frame.size.width / self.imageView.bounds.size.width
-            var newScale = currentScale*sender.scale
-            if newScale < 1 {
-                newScale = 1
-            }
-            if newScale > 6 {
-                newScale = 6
-            }
-            let transform = CGAffineTransform(scaleX: newScale, y: newScale)
-            self.imageView.transform = transform
+        if sender.state == .changed {
+            imageView.transform = imageView.transform.scaledBy(x: sender.scale,
+                                                               y: sender.scale)
             sender.scale = 1
+        } else if sender.state == .ended {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imageView.transform = CGAffineTransform.identity
+            })
         }
     }
-    
-    
     
     // MARK: - Menu action sheet
     
