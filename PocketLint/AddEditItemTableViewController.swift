@@ -198,22 +198,14 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
             longitude = Double(currentLocation!.longitude)
         }
         
-        // Convert Core Data Entity into Dictionary for upload
-        let uploadItem: NSDictionary = [
-            "date": date as NSString,
-            "title" : title as NSString? ?? "",
-            "textContent" : textContent as NSString? ?? "",
-            "latitude" : latitude as NSNumber? ?? 0,
-            "longitude" : longitude as NSNumber? ?? 0
-        ]
         
         
+        // Initialise variables for image upload
         let imageRef = self.storageRef.child("\(filename).jpg")
         var downloadURL: String!
-        
-        // Set upload path
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
+        // Upload image to Firebase Storage
         let uploadTask = imageRef.putData(image, metadata: metaData) {(metaData,error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -225,14 +217,23 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
                 imageRef.downloadURL(completion: { url, error in
                     if let error = error {
                         print(error.localizedDescription)
+                        self.displayMessage("Error", message: "Photo could not be uploaded. Please check your internet connection or try again later.")
                     } else {
                         downloadURL = url!.absoluteString
-                        self.databaseRef.child("\(filename)").updateChildValues(["image": downloadURL])
+                        
+                        // Place upload data into a dictionary
+                        let uploadItem: NSDictionary = [
+                            "image" : downloadURL as NSString,
+                            "date": date as NSString,
+                            "title" : title as NSString? ?? "",
+                            "textContent" : textContent as NSString? ?? "",
+                            "latitude" : latitude as NSNumber? ?? 0,
+                            "longitude" : longitude as NSNumber? ?? 0
+                        ]
+                        
                         // Upload item data
                         self.databaseRef.child("\(filename)").setValue(uploadItem)
                         self.dismiss(animated: true, completion: nil)
-                        //self.displayMessage("Success", message: "Photo uploaded!")
-                        
                     }
                 })
                 

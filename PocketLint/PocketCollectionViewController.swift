@@ -112,7 +112,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     private func fetchItemsFromFirebase() {
         // Load images from firebase
         
-        databaseRef.observe(.value, with: { (snapshot) in
+        databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             guard let value = snapshot.value as? NSDictionary else {
                 return
@@ -137,6 +137,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                         self.itemList.append(item)
                         self.collectionView?.insertItems(at:[IndexPath(row: self.itemList.count - 1, section: 0)])
                         self.collectionView?.reloadSections([0])
+                        self.updateTitle()
                     }
                     else {
                         self.storageRef.reference(forURL: item.imageURL).getData(maxSize: 5 * 1024 * 1024, completion: {
@@ -148,12 +149,12 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                                 self.itemList.append(item)
                                 self.collectionView?.insertItems(at: [IndexPath(row: self.itemList.count - 1 , section: 0)])
                                 self.collectionView?.reloadSections([0])
+                                self.updateTitle()
                             }
                         })
                     }
                 }
             }
-            self.updateTitle()
             
         }) { (error) in
             print(error.localizedDescription)

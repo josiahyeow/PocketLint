@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.840876"
+            timestampString = "548770043.671545"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.840938"
+            timestampString = "548770043.671981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.840984"
+            timestampString = "548770043.672292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
             <Locations>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841027"
+            timestampString = "548770043.672585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841066"
+            timestampString = "548770043.67287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -138,12 +138,12 @@
                   moduleName = "PocketLint"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
-                  timestampString = "547952904.0890779"
+                  timestampString = "548770029.613301"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "796">
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -153,12 +153,12 @@
                   moduleName = "PocketLint"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
-                  timestampString = "547952904.0920759"
+                  timestampString = "548770029.615196"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "40">
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841105"
+            timestampString = "548770043.673155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841144"
+            timestampString = "548770043.6734411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841181"
+            timestampString = "548770043.673722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.84122"
+            timestampString = "548770043.674003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841256"
+            timestampString = "548770043.674289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841293"
+            timestampString = "548770043.674583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -266,13 +266,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841329"
+            timestampString = "548770043.674859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in PocketLint.PocketCollectionViewController.(fetchItemsFromFirebase in _2F51D0CF79D56EDD07404F1B87B1A2D4)() -&gt; ()"
+                  moduleName = "PocketLint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
+                  timestampString = "548770075.018854"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "5368">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PocketLint.Item) -&gt; Swift.Bool in closure #1 (__ObjC.DataSnapshot) -&gt; () in PocketLint.PocketCollectionViewController.(fetchItemsFromFirebase in _2F51D0CF79D56EDD07404F1B87B1A2D4)() -&gt; ()"
+                  moduleName = "PocketLint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
+                  timestampString = "548770075.0207911"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.2438461"
+            timestampString = "548732864.2533751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -298,13 +330,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.243909"
+            timestampString = "548732864.253426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "menuTapped(_:)"
-            landmarkType = "7">
+            landmarkName = "ViewItemTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.243957"
+            timestampString = "548732864.2534651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -330,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.244013"
+            timestampString = "548732864.253505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -378,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.244087"
+            timestampString = "548732864.253543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -394,12 +426,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.244133"
+            timestampString = "548732864.25358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "menuTapped(_:)"
+            landmarkName = "handlePan(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -410,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.244177"
+            timestampString = "548732864.253616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -426,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841447"
+            timestampString = "548770043.6753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "deleteItem(cell:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548731872.841491"
+            timestampString = "548770043.675595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "editItemOnFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548728874.244779"
+            timestampString = "548732864.253912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -474,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548731872.841849"
+            timestampString = "548770043.675674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "sortItems()"
             landmarkType = "7">
          </BreakpointContent>
@@ -486,15 +518,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548731872.841895"
+            timestampString = "548770043.675954"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "editItemOnFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548731872.842147"
+            timestampString = "548770043.676015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -522,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548731872.842394"
+            timestampString = "548770043.676071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -538,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548731872.8426369"
+            timestampString = "548770043.676126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "165"
@@ -554,12 +586,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548731872.842885"
+            timestampString = "548770043.676181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "addItemToFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548770043.676223"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548770043.676465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in PocketLint.PocketCollectionViewController.(fetchItemsFromFirebase in _2F51D0CF79D56EDD07404F1B87B1A2D4)() -&gt; ()"
+                  moduleName = "PocketLint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
+                  timestampString = "548769627.961758"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "6792">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in PocketLint.PocketCollectionViewController.(fetchItemsFromFirebase in _2F51D0CF79D56EDD07404F1B87B1A2D4)() -&gt; ()"
+                  moduleName = "PocketLint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
+                  timestampString = "548769627.964401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548770043.6766959"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548770043.6769201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -569,14 +697,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548731872.843104"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548770043.6771441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "addItemToFirebase()"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548770099.267747"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in PocketLint.PocketCollectionViewController.(fetchItemsFromFirebase in _2F51D0CF79D56EDD07404F1B87B1A2D4)() -&gt; ()"
+                  moduleName = "PocketLint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
+                  timestampString = "548770099.496668"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "5368">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PocketLint.Item) -&gt; Swift.Bool in closure #1 (__ObjC.DataSnapshot) -&gt; () in PocketLint.PocketCollectionViewController.(fetchItemsFromFirebase in _2F51D0CF79D56EDD07404F1B87B1A2D4)() -&gt; ()"
+                  moduleName = "PocketLint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josiah/Github/FIT3027-iOS-Android/iOS/mobile-application/PocketLint/PocketLint/PocketCollectionViewController.swift"
+                  timestampString = "548770099.498749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
