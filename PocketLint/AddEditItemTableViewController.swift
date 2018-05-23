@@ -221,22 +221,22 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
                 return
             }
             else {
-                // Upload item data
-                self.databaseRef.child("\(filename)").setValue(uploadItem)
-                
                 // Store download URL of image
                 imageRef.downloadURL(completion: { url, error in
                     if let error = error {
                         print(error.localizedDescription)
                     } else {
                         downloadURL = url!.absoluteString
-                        self.databaseRef.child("\(filename)").setValue(uploadItem)
                         self.databaseRef.child("\(filename)").updateChildValues(["image": downloadURL])
+                        // Upload item data
+                        self.databaseRef.child("\(filename)").setValue(uploadItem)
                         self.dismiss(animated: true, completion: nil)
                         //self.displayMessage("Success", message: "Photo uploaded!")
                         
                     }
                 })
+                
+                
             }
         }
         

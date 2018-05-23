@@ -16,7 +16,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     var userID: String?
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage()
-    var connected = true
+    var connected = false
     
     // Initialise list to store images and image urls
     var currentItems = [Item]()

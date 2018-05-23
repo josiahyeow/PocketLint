@@ -1449,22 +1449,23 @@ Cgo
         <scene sceneID="wMy-UZ-tpm">
             <objects>
                 <tableViewController storyboardIdentifier="ViewItemTableViewController" id="nja-Qh-Plp" customClass="ViewItemTableViewController" customModule="PocketLint" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DLt-tu-dKJ">
+                    <tableView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DLt-tu-dKJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
                             <tableViewSection id="pdW-c6-ii4">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="400" id="17F-8l-biG">
+                                    <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="400" id="17F-8l-biG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="17F-8l-biG" id="clN-cr-Mu3">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="399.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R4J-Ep-yQt">
+                                                <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R4J-Ep-yQt">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="414.33333333333331"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="R4J-Ep-yQt" secondAttribute="height" multiplier="1:1" id="YTD-eh-QXf"/>
                                                     </constraints>
@@ -1479,6 +1480,9 @@ Cgo
                                                 <constraint firstItem="R4J-Ep-yQt" firstAttribute="centerX" secondItem="clN-cr-Mu3" secondAttribute="centerX" id="sMs-be-FRu"/>
                                                 <constraint firstAttribute="trailing" secondItem="R4J-Ep-yQt" secondAttribute="trailing" id="xKk-rA-LX2"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="rhc-XD-doc" appends="YES" id="wty-5x-aZU"/>
+                                            </connections>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="540" id="2ST-gv-vUc">
@@ -1582,11 +1586,11 @@ Cgo
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgH-Ie-kPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="8Tj-l9-CTd">
+                <pinchGestureRecognizer id="rhc-XD-doc">
                     <connections>
-                        <action selector="handlePan:" destination="nja-Qh-Plp" id="Iys-Qu-rNM"/>
+                        <action selector="handlePinch:" destination="nja-Qh-Plp" id="2nB-Qt-5DK"/>
                     </connections>
-                </panGestureRecognizer>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1867" y="-743"/>
         </scene>
@@ -1931,7 +1935,7 @@ Cgo
         <image name="cogwheel" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uaU-h7-yid"/>
+        <segue reference="SR2-yU-D4G"/>
         <segue reference="Uo0-f9-7O8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.90780466790000003" green="0.22138610480000001" blue="0.29083526129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

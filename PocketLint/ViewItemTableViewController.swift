@@ -109,6 +109,26 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         self.delegate?.update() // Update PocketView to reflect the changes
     }
     
+    // MARK: - Image zoom
+    
+    @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
+        if sender.state == .began || sender.state == .changed {
+            let currentScale = self.imageView.frame.size.width / self.imageView.bounds.size.width
+            var newScale = currentScale*sender.scale
+            if newScale < 1 {
+                newScale = 1
+            }
+            if newScale > 6 {
+                newScale = 6
+            }
+            let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+            self.imageView.transform = transform
+            sender.scale = 1
+        }
+    }
+    
+    
+    
     // MARK: - Menu action sheet
     
     @IBAction func menuTapped(_ sender: Any) {
