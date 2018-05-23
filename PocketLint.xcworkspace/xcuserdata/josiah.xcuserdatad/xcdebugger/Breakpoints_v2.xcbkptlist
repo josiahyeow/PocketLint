@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.540994"
+            timestampString = "548776676.642828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.541913"
+            timestampString = "548776676.642978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.542756"
+            timestampString = "548776676.643113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
             <Locations>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.543841"
+            timestampString = "548776676.643266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.544632"
+            timestampString = "548776676.643412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
             <Locations>
@@ -170,7 +170,87 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.545337"
+            timestampString = "548776676.6435699"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548776676.643724"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548776676.643873"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548776676.644022"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "PocketCollectionViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548776676.644172"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548776676.6443191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -186,91 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.546068"
+            timestampString = "548776676.644466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "fetchItemsFromFirebase()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.5466959"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "fetchItemsFromFirebase()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.547215"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "PocketCollectionViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.5477459"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "fetchItemsFromFirebase()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.5482481"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "fetchItemsFromFirebase()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.548795"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
             <Locations>
@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.21459"
+            timestampString = "548776676.644614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -330,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.214762"
+            timestampString = "548776676.644734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.214833"
+            timestampString = "548776676.644837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -362,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.214897"
+            timestampString = "548776676.6449389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.2149611"
+            timestampString = "548776676.64504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.215031"
+            timestampString = "548776676.645141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.215124"
+            timestampString = "548776676.645245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.549502"
+            timestampString = "548776676.645349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "deleteItem(cell:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.215251"
+            timestampString = "548776676.645485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "editItemOnFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/ViewItemTableViewController.swift"
-            timestampString = "548773860.215898"
+            timestampString = "548776676.645618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.550016"
+            timestampString = "548776676.645739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "sortItems()"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.216063"
+            timestampString = "548776676.64588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "editItemOnFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.216432"
+            timestampString = "548776676.646027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "saveItem(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.2167749"
+            timestampString = "548776676.6461639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "saveItem(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.21716"
+            timestampString = "548776676.646305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "AddEditItemTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.217507"
+            timestampString = "548776676.646444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "addItemToFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.550607"
+            timestampString = "548776676.646566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.551029"
+            timestampString = "548776676.6466841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
             <Locations>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.551471"
+            timestampString = "548776676.646793"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,23 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.551898"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "fetchItemsFromFirebase()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.552319"
+            timestampString = "548776676.646899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -710,15 +694,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PocketLint/PocketCollectionViewController.swift"
+            timestampString = "548776676.6470079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "fetchItemsFromFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/PocketCollectionViewController.swift"
-            timestampString = "548770733.5527461"
+            timestampString = "548776676.647135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "fetchItemsFromFirebase()"
             landmarkType = "7">
             <Locations>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.218066"
+            timestampString = "548776676.647241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "addItemToFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketLint/AddEditItemTableViewController.swift"
-            timestampString = "548773860.218371"
+            timestampString = "548776676.647342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "addItemToFirebase()"
             landmarkType = "7">
          </BreakpointContent>

@@ -39,6 +39,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         let defaults = UserDefaults.standard
         // Set user preferences
         defaults.set("Newest First", forKey: "sortOrder")
+        defaults.set(true, forKey: "itemDetection")
         defaults.set(true, forKey: "textDetection")
         defaults.set(true, forKey: "saveLocation")
         defaults.set(0, forKey: "itemSize")

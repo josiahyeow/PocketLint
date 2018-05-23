@@ -15,6 +15,7 @@ protocol SettingsTableViewControllerDelegate: class {
 
 class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var sortOrderInputField: UITextField!
+    @IBOutlet weak var itemDetectionSwitch: UISwitch!
     @IBOutlet weak var textDetectionSwitch: UISwitch!
     @IBOutlet weak var saveLocationSwitch: UISwitch!
     
@@ -42,7 +43,13 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
         // Get sort option
         sortOrderInputField.text = defaults.object(forKey: "sortOrder") as? String
         
-        // Get text detection value
+        // Get detection values
+        if defaults.object(forKey: "itemDetection") as! Bool {
+            itemDetectionSwitch.isOn = true
+        }
+        else {
+            itemDetectionSwitch.isOn = false
+        }
         if defaults.object(forKey: "textDetection") as! Bool {
             textDetectionSwitch.isOn = true
         }
@@ -63,6 +70,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
     
     override func viewWillDisappear(_ animated: Bool) {
         defaults.set(sortOrderInputField.text, forKey: "sortOrder")
+        defaults.set(itemDetectionSwitch.isOn, forKey: "itemDetection")
         defaults.set(textDetectionSwitch.isOn, forKey: "textDetection")
         defaults.set(saveLocationSwitch.isOn, forKey: "saveLocation")
         print(itemSizeSegmentedControl.selectedSegmentIndex)
@@ -104,7 +112,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section == 0 {
+        if section < 2 {
             return 2
         }
         else {

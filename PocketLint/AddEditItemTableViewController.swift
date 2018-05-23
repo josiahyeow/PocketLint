@@ -22,6 +22,8 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     @IBOutlet weak var uploadProgressView: UIProgressView!
     @IBOutlet weak var detectLabelActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var detectTextActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var detectTextButton: UIButton!
+    @IBOutlet weak var detectItemButton: UIButton!
     
     let defaults = UserDefaults.standard
     
@@ -81,10 +83,15 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         locationManager.startUpdatingLocation()
         
         // Get text detection value
-        if defaults.object(forKey: "textDetection") as! Bool {
+        if defaults.object(forKey: "itemDetection") as! Bool {
             // Scan photo
             if (newItem) {
                 self.detectLabel()
+            }
+        }
+        if defaults.object(forKey: "textDetection") as! Bool {
+            // Scan photo
+            if (newItem) {
                 self.detectText()
             }
         }
@@ -119,6 +126,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
         // Start activity indicator
         self.detectLabelActivityIndicator.startAnimating()
+        self.detectItemButton.isEnabled = false
         
         labelDetector.detect(in: image) { (labels: [VisionCloudLabel]?, error: Error?) in
             guard error == nil, let labels = labels, !labels.isEmpty else {
@@ -131,6 +139,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
             for label in labels {
                 self.titleTextField.text = label.label
                 self.detectLabelActivityIndicator.stopAnimating()
+                self.detectItemButton.isEnabled = true
             }
         }
     }
@@ -141,6 +150,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
         // Start activity indicator
         self.detectTextActivityIndicator.startAnimating()
+        self.detectTextButton.isEnabled = false
         
         textDetector.detect(in: image) { (cloudText, error) in
             guard error == nil, let cloudText = cloudText else {
@@ -153,14 +163,17 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
             // Recognized and extracted text
             self.textContentTextField.text = cloudText.text
             self.detectTextActivityIndicator.stopAnimating()
+            self.detectTextButton.isEnabled = true
             
         }
     }
     
     // MARK: Actions
-    
-    @IBAction func redetectText(_ sender: Any) {
+    @IBAction func detectItemTapped(_ sender: Any) {
         detectLabel()
+    }
+    
+    @IBAction func detectTextTapped(_ sender: Any) {
         detectText()
     }
     
