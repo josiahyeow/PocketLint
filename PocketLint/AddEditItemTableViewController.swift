@@ -5,13 +5,17 @@
 //  Created by Josiah Yeow on 27/4/18.
 //  Copyright © 2018 Josiah Yeow. All rights reserved.
 //
+// This TableViewController allows the user to add or edit an item.
+// It allows the user edit an item's title and textContent or
+// to use Google's MLKit to detect the image's content as well as save the location the image was taken.
 
 import UIKit
 import MapKit
 import Firebase
 
+// This tell's the ViewItemTableView to refresh its views.
 protocol AddEditItemTableViewControllerDelegate: class {
-    func updateItem(title: String, textContent: String)
+    func update()
 }
 
 class AddEditItemTableViewController: UITableViewController, CLLocationManagerDelegate {
@@ -49,14 +53,39 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
         self.tableView.allowsSelection = false
         
+        // Get Firebase User ID
         guard let userID = Auth.auth().currentUser?.uid else {
             print("Firebase User ID is invalid.")
             return
         }
-        // Store items in user's account folder
+        
+        // Set database and storage paths to the user's account folder
         databaseRef = Database.database().reference().child("users").child("\(userID)")
         storageRef = Storage.storage().reference().child("users").child("\(userID)")
         
+        // Set up form based on Adding or Editing an item.
+        addOrEdit()
+        
+        // Set up location
+        setUpLocationManager()
+        
+        // Autodetect text and save location if setting is turned on.
+        applySettings()
+        
+        // Initialise upload progress view to 0.
+        self.uploadProgressView.setProgress(0, animated: false)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Data Initialisation Functions
+    
+    // Add data based on whether an item is being added or edited.
+    func addOrEdit() {
         if ((photo) != nil) {
             self.title = "Add Item"
             // Set photo
@@ -74,21 +103,32 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
             }
             newItem = false
         }
-        textContentTextField.delegate = self
-        // Set up location
+    }
+    
+    // Set up location manager properties
+    func setUpLocationManager() {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
-        // Get text detection value
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let loc: CLLocation = locations.last!
+        currentLocation = loc.coordinate
+    }
+    
+    // Apply user settings. Auto detect text if setting is turned on.
+    func applySettings() {
+        // Get title detection value
         if defaults.object(forKey: "itemDetection") as! Bool {
             // Scan photo
             if (newItem) {
                 self.detectLabel()
             }
         }
+        // Get text detection value
         if defaults.object(forKey: "textDetection") as! Bool {
             // Scan photo
             if (newItem) {
@@ -103,23 +143,15 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         else {
             saveLocationToggle.isOn = false
         }
-        
-        self.uploadProgressView.setProgress(0, animated: false)
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let loc: CLLocation = locations.last!
-        currentLocation = loc.coordinate
     }
     
     // MARK: MLKit Text Detection Functions
     
+    /*
+     Detect objects in image and apply it to the item's title.
+     
+     References: https://firebase.google.com/docs/ml-kit/ios/label-images
+    */
     func detectLabel() {
         let labelDetector = vision.cloudLabelDetector()  // Check console for errors.
         let image = VisionImage(image: imageView.image!)
@@ -144,6 +176,11 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         }
     }
     
+    /*
+     Detect text in image and apply it to the item's textContent.
+     
+     References: https://firebase.google.com/docs/ml-kit/ios/recognize-text
+    */
     func detectText() {
         let textDetector = vision.cloudTextDetector()  // Check console for errors.
         let image = VisionImage(image: imageView.image!)
@@ -191,6 +228,8 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         
     }
     
+    // MARK: Firebase Activities
+    
     // Converts Date object to String
     private func dateToString(date: Date) -> String {
         let formatter = DateFormatter()
@@ -199,8 +238,12 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         return date
     }
     
-    // MARK: Firebase Activities
-    
+    /*
+     Adds item to Firebase Database and Storage.
+     
+     References: https://firebase.google.com/docs/database/ios/read-and-write
+                https://firebase.google.com/docs/storage/ios/upload-files
+     */
     private func addItemToFirebase() {
         let filename = UInt(Date().timeIntervalSince1970)
         let image = UIImageJPEGRepresentation(imageView.image!, 0.8)!
@@ -215,8 +258,6 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
             latitude = Double(currentLocation!.latitude)
             longitude = Double(currentLocation!.longitude)
         }
-        
-        
         
         // Initialise variables for image upload
         let imageRef = self.storageRef.child("\(filename).jpg")
@@ -254,8 +295,6 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
                         self.dismiss(animated: true, completion: nil)
                     }
                 })
-                
-                
             }
         }
         
@@ -267,15 +306,27 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         }
     }
     
+    // Updates an item's value in Firebase Database and Locally.
     private func editItemOnFirebase() {
         let filename = item?.filename
         let title = titleTextField.text
         let textContent = textContentTextField.text
         
         // Update item in database
-        self.databaseRef.child("\(filename!)").updateChildValues(["title": title ?? "", "textContent": textContent ?? ""])
-        self.delegate?.updateItem(title: title!, textContent: textContent!)
-        self.dismiss(animated: true, completion: nil)
+        self.databaseRef.child("\(filename!)").updateChildValues(["title": title ?? "", "textContent": textContent ?? ""]) { (error, ref) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.displayMessage("Error", message: "Item could not be updated. Please check your internet connection or try again later.")
+                return
+            }
+            else {
+                // Update Item Locally
+                self.item?.title = title!
+                self.item?.textContent = textContent!
+                self.delegate?.update() // Tell ViewItemTableView to update its view
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     // Error Message Template
@@ -294,7 +345,7 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Only show save location toggle if adding new item
         if newItem {
-            return 5
+            return 5    // Adds save location toggle
         }
         else {
             return 4
@@ -305,74 +356,4 @@ class AddEditItemTableViewController: UITableViewController, CLLocationManagerDe
         return 1
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension AddEditItemTableViewController: UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-        let size = CGSize(width: textView.frame.size.width, height: .infinity)
-        let estimatedSize = textView.sizeThatFits(size)
-        
-        textView.constraints.forEach { (constraint) in
-            if constraint.firstAttribute == .height {
-                constraint.constant = estimatedSize.height
-            }
-        }
-
-    }
 }

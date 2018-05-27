@@ -18,8 +18,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     var storageRef = Storage.storage()
     var connected = false
     
-    // Initialise list to store images and image urls
-    var currentItems = [Item]()
+    // Initialise list to store items
     var itemList = [Item]()
     
     // Collection View variables
@@ -36,19 +35,16 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         // Hides navigation bar outline
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        let defaults = UserDefaults.standard
-        // Set user preferences
-        defaults.set("Newest First", forKey: "sortOrder")
-        defaults.set(true, forKey: "itemDetection")
-        defaults.set(true, forKey: "textDetection")
-        defaults.set(true, forKey: "saveLocation")
-        defaults.set(0, forKey: "itemSize")
+        // Get user settings
+        getSettings()
         
         // Get Firebase userID and database reference path
         guard let getUserID = Auth.auth().currentUser?.uid else {
             displayErrorMessage("Firebase User ID is invalid.")
             return
         }
+        
+        // Update database ref with user ID
         userID = getUserID
         databaseRef = Database.database().reference().child("users").child("\(userID!)")
         
@@ -65,9 +61,8 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+        // Fetch items from Firebase
         self.fetchItemsFromFirebase()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,6 +72,33 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Apply user settings upon app launch. Set default values if no values found.
+    func getSettings() {
+        let defaults = UserDefaults.standard
+        // Set user preferences
+        if (defaults.object(forKey: "SortOrder") == nil) {
+            defaults.set("Newest First", forKey: "sortOrder")
+        }
+        if (defaults.object(forKey: "itemDetection") == nil) {
+            defaults.set(true, forKey: "itemDetection")
+        }
+        if (defaults.object(forKey: "textDetection") == nil) {
+            defaults.set(true, forKey: "textDetection")
+        }
+        if (defaults.object(forKey: "saveLocation") == nil) {
+            defaults.set(true, forKey: "saveLocation")
+        }
+        if (defaults.object(forKey: "itemSize") == nil) {
+            defaults.set(0, forKey: "itemSize")
+            itemsPerRow = 1
+        }
+        else {
+            var itemSize = defaults.object(forKey: "itemSize") as! CGFloat
+            itemSize += 1
+            itemsPerRow = itemSize
+        }
     }
     
     func updateTitle() {
@@ -299,6 +321,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         // Configure the cell
         
         // Add cell styling
+        // Reference: https://stackoverflow.com/questions/4754392/uiview-with-rounded-corners-and-drop-shadow/34984063?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
         cell.contentView.layer.cornerRadius = 16
         cell.contentView.layer.masksToBounds = true;
         
@@ -321,9 +344,10 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
         // Set Title
         cell.titleLabel.text = itemList[indexPath.row].title
         
-        // Connect cell to delegate which allows the menu button to function
+        // Connect cell to delegate which allows the menu button to function.
         cell.delegate = self
         
+        // Hide item details from thumbnail when using compact view.
         if itemsPerRow > 1 {
             cell.dateLabel.isHidden = true
             cell.menuButton.isHidden = true
@@ -393,6 +417,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
                 viewItemVC.delegate = self
                 
                 // Set Hero animation IDs for cell and view item
+                // References: https://github.com/lkzhao/Hero
                 let imageHeroId = "itemImage\(String(indexPath![1]))"
                 let titleHeroId = "itemTitle\(String(indexPath![1]))"
                 let dateHeroId = "itemDate\(String(indexPath![1]))"
@@ -421,40 +446,6 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
             }
         }
     }
-
-
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
 
 // Delegate for ItemCollectionViewCell which allows item menu to function

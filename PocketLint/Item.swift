@@ -10,7 +10,7 @@ import UIKit
 
 class Item: NSObject {
     var filename: String
-    var imageURL: String
+    var imageURL: String 
     var image: UIImage
     var title: String
     var textContent: String

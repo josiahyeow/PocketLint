@@ -5,12 +5,16 @@
 //  Created by Josiah Yeow on 28/4/18.
 //  Copyright © 2018 Josiah Yeow. All rights reserved.
 //
+// This TableViewController displays an item's image, title, text content and location.
+// It also contains a menu which allows the user to share, edit or remove the current item.
 
 import UIKit
 import MapKit
 import Firebase
 import Hero
 
+
+// This tell's the CollectionView to delete this item and update it's data when the user selects "Remove" from the menu.
 protocol ViewItemTableViewControllerDelegate: class {
     func delete(cell: ItemCollectionViewCell)
     func update()
@@ -28,7 +32,7 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
     var item: Item?
     var cell: ItemCollectionViewCell?
     
-    // Hero animation IDs
+    // Initialise Hero animation IDs.
     var imageHeroId: String?
     var titleHeroId: String?
     var dateHeroId: String?
@@ -39,9 +43,9 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.allowsSelection = false  // Turn off table cell highlighting
+        self.tableView.allowsSelection = false  // Turn off table cell highlighting.
         
-        // Set animation hero IDs
+        // Set animation hero IDs.
         imageView.hero.id = imageHeroId
         titleLabel.hero.id = titleHeroId
         dateLabel.hero.id = dateHeroId
@@ -54,43 +58,17 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Update view with item content
-        // Add image
-        imageView.image = item?.image
-        
-        // Add Text
         self.title = ""
-        titleLabel.text = item?.title
-        textContentTextView.text = item?.textContent
         
-        // Update text view height
-        let size = CGSize(width: textContentTextView.frame.size.width, height: .infinity)
-        let estimatedSize = textContentTextView.sizeThatFits(size)
-        textContentTextView.constraints.forEach { (constraint) in
-            if constraint.firstAttribute == .height {
-                constraint.constant = estimatedSize.height
-            }
-        }
+        // Update view with item content.
         
-        // Set date label
-        let formatter = DateFormatter()
-        //formatter.dateFormat = "h:mm a d MMM YYYY"
-        formatter.dateStyle = .medium
-        formatter.doesRelativeDateFormatting = true
-        let itemDate = formatter.string(from: (item?.date)!)
-        dateLabel.text = itemDate.uppercased()
+        imageView.image = item?.image   // Add image
+        titleLabel.text = item?.title   // Add title
+        setAndResizeTextContent()       // Add text view and update height
+        setDate()                       // Set date label
+        initMap()                       // Initialise the map
         
-        // Show map if longitude and latitude was saved
-        if(((item?.longitude) != 0) && ((item?.latitude) != 0)) {
-            self.locationMapView.isHidden = false
-            // Add pin to map
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: (item?.latitude)!, longitude: (item?.longitude)!)
-            locationMapView.addAnnotation(annotation)
-            locationMapView.showAnnotations([annotation], animated: true)
-        }
-        
-        // Resize tableview cell to fit content
+        // Resize tableview cell to fit content.
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -100,33 +78,56 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Data Initialisation Functions
     
-    // Update item values on edit
-    func updateItem(title: String, textContent: String) {
-        item?.title = title
-        item?.textContent = textContent
+    // Set and resize textContent view based on the length of its contents.
+    func setAndResizeTextContent() {
+        textContentTextView.text = item?.textContent
+        let size = CGSize(width: textContentTextView.frame.size.width, height: .infinity)
+        let estimatedSize = textContentTextView.sizeThatFits(size)
+        textContentTextView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+        }
+    }
+    
+    // Set the date and format.
+    func setDate() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.doesRelativeDateFormatting = true
+        let itemDate = formatter.string(from: (item?.date)!)
+        dateLabel.text = itemDate.uppercased()
+    }
+    
+    // Initialise and show the map if longitude and latitude was saved.
+    func initMap() {
+        if(((item?.longitude) != 0) && ((item?.latitude) != 0)) {
+            self.locationMapView.isHidden = false
+            // Add pin to map
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: (item?.latitude)!, longitude: (item?.longitude)!)
+            locationMapView.addAnnotation(annotation)
+            locationMapView.showAnnotations([annotation], animated: true)
+        }
+    }
+    
+    // Update item values on edit.
+    func update() {
         self.viewWillAppear(true)   // Update current view to reflect the changes
         self.delegate?.update() // Update PocketView to reflect the changes
     }
     
-    // MARK: - Image zoom
+    // MARK: - Actions
     
-    @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
-        if sender.state == .changed {
-            imageView.transform = imageView.transform.scaledBy(x: sender.scale,
-                                                               y: sender.scale)
-            sender.scale = 1
-        } else if sender.state == .ended {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.imageView.transform = CGAffineTransform.identity
-            })
-        }
-    }
-    
-    // MARK: - Menu action sheet
-    
+    // Displays menu with Share, Edit, Remove and Cancel options.
     @IBAction func menuTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
+        
+        let shareButton = UIAlertAction(title: "Share", style: .default, handler: { (action) -> Void in
+            self.shareImage()
+        })
         
         let editButton = UIAlertAction(title: "Edit", style: .default, handler: { (action) -> Void in
             self.performSegue(withIdentifier: "editItemSegue", sender: Any?.self)
@@ -142,7 +143,7 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
             print("Cancel button tapped")
         })
         
-        
+        alertController.addAction(shareButton)
         alertController.addAction(editButton)
         alertController.addAction(deleteButton)
         alertController.addAction(cancelButton)
@@ -150,41 +151,53 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         self.navigationController!.present(alertController, animated: true, completion: nil)
     }
     
+    
+    // Dismisses view controller when close button is tapped.
     @IBAction func closeButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
-        switch sender.state {
-        case .began:
-            hero.dismissViewController()
-        case .changed:
-            let translation = sender.translation(in: nil)
-            let progress = translation.y / 2 / view.bounds.height
-            Hero.shared.update(progress)
-        default:
-            Hero.shared.finish()
-        }
-    }
-    
-    // Dissmiss view when using swipe down gesture
-    
+
+    // Dismisses view controller with a swipe down gesture.
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y < -150) {
-            self.title = "Close"
-            if (scrollView.contentOffset.y < -200) {
-                //self.dismiss(animated: true, completion: nil)
-                hero.dismissViewController()
-            }
-        }
-        else {
-            self.title = ""
+        if (scrollView.contentOffset.y < -200) {
+            hero.dismissViewController()
         }
     }
     
     
-    // Error Message Template
+    /*
+     Displays an Activity Controller which allows user to share the image with various applications.
+     
+     References: https://stackoverflow.com/questions/35931946/basic-example-for-sharing-text-or-image-with-uiactivityviewcontroller-in-swift
+     */
+    func shareImage() {
+        let imageToShare:[UIImage] = [(item?.image)!]
+        let activityController = UIActivityViewController(activityItems: imageToShare , applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityController, animated: true, completion: nil)
+    }
     
+    /*
+     Allows the image to be zoomed in and out using a pinch gesture.
+     
+     References: https://medium.com/@jeremysh/instagram-pinch-to-zoom-pan-gesture-tutorial-772681660dfe
+     */
+    @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
+        if sender.state == .changed {
+            imageView.transform = imageView.transform.scaledBy(x: sender.scale,
+                                                               y: sender.scale)
+            sender.scale = 1
+        } else if sender.state == .ended {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imageView.transform = CGAffineTransform.identity
+            })
+        }
+    }
+    
+
+    // Displays an alert message with a specified title and message.
     func displayMessage(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
@@ -192,6 +205,7 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
 
     // MARK: - Table view data source
 
@@ -204,51 +218,6 @@ class ViewItemTableViewController: UITableViewController, AddEditItemTableViewCo
         // #warning Incomplete implementation, return the number of rows
         return 2
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 
     // MARK: - Navigation

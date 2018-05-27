@@ -42,8 +42,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Use camera to take photos.</string>
+	<string>PocketLint requires access to the camera to take photos.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Use location to save where photo was taken.</string>
+	<string>PocketLint requires access to location services to save where photo was taken.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>PocketLint requires access to save files to the photo gallery.</string>
 </dict>
 </plist>
