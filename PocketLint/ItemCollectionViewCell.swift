@@ -5,10 +5,12 @@
 //  Created by Josiah Yeow on 27/4/18.
 //  Copyright © 2018 Josiah Yeow. All rights reserved.
 //
+// This CollectionViewCell is the cell that displays an item on the main screen.
 
 import UIKit
 import Hero
 
+// Allows the menu to be opened from a button within the cell
 protocol ItemCollectionViewCellDelegate: class {
     func showMenu(cell: ItemCollectionViewCell)
 }

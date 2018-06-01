@@ -5,6 +5,8 @@
 //  Created by Josiah Yeow on 27/4/18.
 //  Copyright © 2018 Josiah Yeow. All rights reserved.
 //
+// This CollectionViewController retrieves and displays all the items that the user has added to their Pocket.
+// It allows the user to view and delete items, access the settings page and add new items.
 
 import UIKit
 import CoreData

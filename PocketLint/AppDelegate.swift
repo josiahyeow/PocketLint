@@ -23,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Enables the use of Firebase
         FirebaseApp.configure()
         
-        // Enables Firebase data persistence
-        //Database.database().isPersistenceEnabled = true
-        
         // Enable IQKeyboard manager Cocoapod (Adds keyboard navigation and done button)
         IQKeyboardManager.shared.enable = true
         

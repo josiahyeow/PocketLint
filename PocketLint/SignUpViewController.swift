@@ -5,6 +5,7 @@
 //  Created by Josiah Yeow on 27/4/18.
 //  Copyright © 2018 Josiah Yeow. All rights reserved.
 //
+// This view controller allows the user to sign up for an account.
 
 import UIKit
 import Firebase
