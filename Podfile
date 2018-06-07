@@ -11,10 +11,10 @@ target 'PocketLint' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/MLVision'
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManagerSwift', '~> 6.0.3'
   pod 'Hero', '~> 1.2'
   
-  # Pod for Google Vision API
+  # Pod for MLKit text recognition
   pod 'Firebase/MLVisionTextModel'
   
   target 'PocketLintTests' do

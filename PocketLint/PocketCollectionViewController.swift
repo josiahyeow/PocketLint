@@ -128,6 +128,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     // Convert date string to Date object
     private func stringToDate(date: String) -> Date {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_AU") // Had to explicitly set this because similators use US locale.
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
         let date = formatter.date(from: (date))
         return date!
