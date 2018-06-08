@@ -326,7 +326,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fkq-y0-e42">
-                                                    <rect key="frame" x="16" y="16" width="288" height="40"/>
+                                                    <rect key="frame" x="16" y="16" width="343" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="tiE-Vl-gaq"/>
@@ -335,16 +335,16 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XOq-rv-NYy">
-                                                    <rect key="frame" x="16" y="16" width="288" height="27.666666666666671"/>
+                                                    <rect key="frame" x="16" y="16" width="343" height="27.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaD-uy-cd7">
-                                                            <rect key="frame" x="0.0" y="3.6666666666666679" width="239" height="20.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="3.6666666666666679" width="294" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-qO-pUJ">
-                                                            <rect key="frame" x="239" y="0.0" width="51" height="27.666666666666668"/>
+                                                            <rect key="frame" x="294" y="0.0" width="51" height="27.666666666666668"/>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>

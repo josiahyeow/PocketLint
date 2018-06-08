@@ -80,7 +80,7 @@ class PocketCollectionViewController: UICollectionViewController, UIImagePickerC
     func getSettings() {
         let defaults = UserDefaults.standard
         // Set user preferences
-        if (defaults.object(forKey: "SortOrder") == nil) {
+        if (defaults.object(forKey: "sortOrder") == nil) {
             defaults.set("Newest First", forKey: "sortOrder")
         }
         if (defaults.object(forKey: "itemDetection") == nil) {

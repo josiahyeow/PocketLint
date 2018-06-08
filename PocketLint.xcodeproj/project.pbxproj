@@ -26,7 +26,6 @@
 		8A5BB61A20943BDF005A0DF5 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */; };
 		8A5BB61C20944B41005A0DF5 /* ViewItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */; };
 		8A5BB61E20969365005A0DF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */; };
-		8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */; };
 		8A7FA31E20B125910058ACA8 /* References.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7FA31D20B125910058ACA8 /* References.rtf */; };
 		8AFE01A420A3236B0069BD51 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFE01A320A3236B0069BD51 /* FirebaseCore.framework */; };
 		8AFE01A620A52D900069BD51 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE01A520A52D900069BD51 /* Item.swift */; };
@@ -79,7 +78,6 @@
 		8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemTableViewController.swift; sourceTree = "<group>"; };
 		8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketViewController.swift; sourceTree = "<group>"; };
 		8A7FA31D20B125910058ACA8 /* References.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = References.rtf; sourceTree = "<group>"; };
 		8AFE019B20A320960069BD51 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE019D20A320FA0069BD51 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +155,7 @@
 				8A5BB60D20931F23005A0DF5 /* PocketCollectionViewController.swift */,
 				8A5BB61520935410005A0DF5 /* AddEditItemTableViewController.swift */,
 				8A5BB61B20944B41005A0DF5 /* ViewItemTableViewController.swift */,
+				8A08888A20AAD5BB00CBEC5C /* SettingsTableViewController.swift */,
 				8A125AF32092E185007D983A /* ItemCollectionViewCell.swift */,
 				8A5BB61920943BDF005A0DF5 /* LocationAnnotation.swift */,
 				8A3A8C6D208B234C00CA3F48 /* Main.storyboard */,
@@ -165,8 +164,6 @@
 				8A5BB61D20969365005A0DF5 /* GoogleService-Info.plist */,
 				8A3A8C70208B234C00CA3F48 /* PocketLint.xcdatamodeld */,
 				8A3A8C73208B234D00CA3F48 /* Assets.xcassets */,
-				8A5D21D8208D8D4A00A2DEC7 /* PocketViewController.swift */,
-				8A08888A20AAD5BB00CBEC5C /* SettingsTableViewController.swift */,
 				8A7FA31D20B125910058ACA8 /* References.rtf */,
 			);
 			path = PocketLint;
@@ -469,7 +466,6 @@
 				8A5BB61620935410005A0DF5 /* AddEditItemTableViewController.swift in Sources */,
 				8A125AF62092F6C4007D983A /* SignUpViewController.swift in Sources */,
 				8A3A8C6A208B234C00CA3F48 /* AppDelegate.swift in Sources */,
-				8A5D21D9208D8D4A00A2DEC7 /* PocketViewController.swift in Sources */,
 				8AFE01A620A52D900069BD51 /* Item.swift in Sources */,
 				8A125AF42092E185007D983A /* ItemCollectionViewCell.swift in Sources */,
 				8A125AF22092DFD7007D983A /* LogInViewController.swift in Sources */,
